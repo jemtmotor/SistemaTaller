@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7407C324-ED6B-4FF9-B86B-A6F9FF154DD8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SistemaTaller</RootNamespace>
+    <AssemblyName>SistemaTaller</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgregarUnidadRespuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarUnidadRespuesto.Designer.cs">
+      <DependentUpon>AgregarUnidadRespuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCargarCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCargarCheck.Designer.cs">
+      <DependentUpon>fCargarCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCargarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCargarEmpleado.Designer.cs">
+      <DependentUpon>fCargarEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCargarNuevoTipoRespuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCargarNuevoTipoRespuesto.Designer.cs">
+      <DependentUpon>fCargarNuevoTipoRespuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCargarReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCargarReparacion.Designer.cs">
+      <DependentUpon>fCargarReparacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCargarRespuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCargarRespuesto.Designer.cs">
+      <DependentUpon>fCargarRespuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCargarVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCargarVehiculo.Designer.cs">
+      <DependentUpon>fCargarVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fFiltro1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fFiltro1.Designer.cs">
+      <DependentUpon>fFiltro1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fFiltroPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fFiltroPendientes.Designer.cs">
+      <DependentUpon>fFiltroPendientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fListadoMecanico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fListadoMecanico.Designer.cs">
+      <DependentUpon>fListadoMecanico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fListadoRespuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fListadoRespuesto.Designer.cs">
+      <DependentUpon>fListadoRespuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fListadoServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fListadoServicio.Designer.cs">
+      <DependentUpon>fListadoServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fModificarEliminarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fModificarEliminarEmpleado.Designer.cs">
+      <DependentUpon>fModificarEliminarEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fModificarEliminarRespuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fModificarEliminarRespuesto.Designer.cs">
+      <DependentUpon>fModificarEliminarRespuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fTareasPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTareasPendientes.Designer.cs">
+      <DependentUpon>fTareasPendientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AgregarUnidadRespuesto.resx">
+      <DependentUpon>AgregarUnidadRespuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCargarCheck.resx">
+      <DependentUpon>fCargarCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCargarEmpleado.resx">
+      <DependentUpon>fCargarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCargarNuevoTipoRespuesto.resx">
+      <DependentUpon>fCargarNuevoTipoRespuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCargarReparacion.resx">
+      <DependentUpon>fCargarReparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCargarRespuesto.resx">
+      <DependentUpon>fCargarRespuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCargarVehiculo.resx">
+      <DependentUpon>fCargarVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fFiltro1.resx">
+      <DependentUpon>fFiltro1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fFiltroPendientes.resx">
+      <DependentUpon>fFiltroPendientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fListadoMecanico.resx">
+      <DependentUpon>fListadoMecanico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fListadoRespuesto.resx">
+      <DependentUpon>fListadoRespuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fListadoServicio.resx">
+      <DependentUpon>fListadoServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fModificarEliminarEmpleado.resx">
+      <DependentUpon>fModificarEliminarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fModificarEliminarRespuesto.resx">
+      <DependentUpon>fModificarEliminarRespuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTareasPendientes.resx">
+      <DependentUpon>fTareasPendientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LeBron_Poster.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
