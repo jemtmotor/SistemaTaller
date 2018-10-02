@@ -149,10 +149,8 @@
       <DependentUpon>fTareasPendientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Modelos\Chequeo.cs" />
     <Compile Include="Modelos\Diagnostico.cs" />
     <Compile Include="Modelos\Mecanico.cs" />
-    <Compile Include="Modelos\Reparacion.cs" />
     <Compile Include="Modelos\Repuesto.cs" />
     <Compile Include="Modelos\TallerContext.cs" />
     <Compile Include="Modelos\TareaPendiente.cs" />

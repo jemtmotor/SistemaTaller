@@ -15,11 +15,12 @@ namespace SistemaTaller.Modelos
         }
 
         public DbSet<Repuesto> Repuestos { get; set; }
-        public DbSet<Reparacion> Reparaciones { get; set; }
-        public DbSet<Chequeo> Chequeos { get; set; }
+      
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Diagnostico> Diagnosticos { get; set; }
         public DbSet<Mecanico> Mecanicos { get; set; }
+        public DbSet<TareaPendiente> TareaPendientes { get; set; }
+
 
     }
 }

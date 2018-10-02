@@ -11,7 +11,7 @@ namespace SistemaTaller.Modelos
         public int Id { get; set; }
         public string Observacion { get; set; }
         public bool Estado { get; set; }
-        public Chequeo Chequeo { get; set; }
-        public Reparacion Reparacion { get; set; }
+        
+        public TareaPendiente TareaPendiente { get; set; }
     }
 }

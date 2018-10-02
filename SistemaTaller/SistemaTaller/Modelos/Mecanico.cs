@@ -16,7 +16,7 @@ namespace SistemaTaller.Modelos
         public int Celular { get; set; }
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public ICollection<Chequeo> Chequeos { get; set; }
-        public ICollection<Reparacion> Reparaciones { get; set; }
+    
+        public ICollection<TareaPendiente> TareaPendientes { get; set; }
     }
 }

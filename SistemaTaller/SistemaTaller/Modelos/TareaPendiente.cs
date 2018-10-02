@@ -11,11 +11,16 @@ namespace SistemaTaller.Modelos
         public int Id { get; set; }
         //public int Interno { get; set; }
         public DateTime FechaTarea { get; set; }
+        public DateTime FechaRealizado { get; set; }
         public Vehiculo Interno { get; set; }
         public Mecanico Mecanico { get; set; }
         public IEnumerable<Diagnostico> Diagnosticos { get; set; }
-        public string Tipo { get; set; }
+        public ICollection<Repuesto> Repuestos { get; set; }
         public decimal Monto { get; set; }
-       
+        public bool Service { get; set; }
+        ////ES CHEQUEO O REPARACION.
+        /// 
+        public string Tipo { get; set; }
+
     }
 }

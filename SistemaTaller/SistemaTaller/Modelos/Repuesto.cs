@@ -14,7 +14,7 @@ namespace SistemaTaller.Modelos
         public string Marca { get; set; }
         public int Cantidad { get; set; }
         public int StockMinimo { get; set; }
-        public Reparacion Reparacion { get; set; }
+       public TareaPendiente TareaPendiente { get; set; }
         
     }
 }
