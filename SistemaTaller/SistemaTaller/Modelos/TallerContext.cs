@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SistemaTaller.Modelos
+{
+    class TallerContext : DbContext
+    {
+        public TallerContext() : base()
+        {
+
+        }
+
+        public DbSet<Repuesto> Repuestos { get; set; }
+        public DbSet<Reparacion> Reparaciones { get; set; }
+        public DbSet<Chequeo> Chequeos { get; set; }
+        public DbSet<Vehiculo> Vehiculos { get; set; }
+        public DbSet<Diagnostico> Diagnosticos { get; set; }
+        public DbSet<Mecanico> Mecanicos { get; set; }
+
+    }
+}
