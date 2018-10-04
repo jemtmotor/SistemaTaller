@@ -21,6 +21,11 @@ namespace SistemaTaller.Modelos
         public DbSet<Mecanico> Mecanicos { get; set; }
         public DbSet<TareaPendiente> TareaPendientes { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
 
     }
 }

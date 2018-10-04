@@ -10,8 +10,9 @@ namespace SistemaTaller.Modelos
     {
         public int Id { get; set; }
         public string Observacion { get; set; }
+        public string Sector { get; set; }
         public bool Estado { get; set; }
-        
+        public string Parte { get; set; }
         public TareaPendiente TareaPendiente { get; set; }
     }
 }
