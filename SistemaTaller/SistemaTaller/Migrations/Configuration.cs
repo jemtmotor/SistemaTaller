@@ -10,7 +10,6 @@ namespace SistemaTaller.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SistemaTaller.Modelos.TallerContext context)
