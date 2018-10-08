@@ -58,6 +58,9 @@
     <Compile Include="AgregarUnidadRespuesto.Designer.cs">
       <DependentUpon>AgregarUnidadRespuesto.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosDao\MecanicosDao.cs" />
+    <Compile Include="DatosDao\TareaPendienteDao.cs" />
+    <Compile Include="DatosDao\VehiculosDao.cs" />
     <Compile Include="fCargarCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +145,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="fTareasPendientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +159,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelos\Diagnostico.cs" />
+    <Compile Include="Modelos\Interfaz\FilaDiagnosticoChequeo.cs" />
     <Compile Include="Modelos\Mecanico.cs" />
     <Compile Include="Modelos\Repuesto.cs" />
     <Compile Include="Modelos\TallerContext.cs" />
@@ -201,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTareasPendientes.resx">
       <DependentUpon>fTareasPendientes.cs</DependentUpon>

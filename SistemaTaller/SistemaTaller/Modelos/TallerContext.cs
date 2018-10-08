@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemaTaller.Modelos
 {
-    class TallerContext : DbContext
+    public class TallerContext : DbContext
     {
         public TallerContext() : base()
         {

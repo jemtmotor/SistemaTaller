@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaTaller.DatosDao;
+using SistemaTaller.Modelos;
 
 namespace SistemaTaller
 {
@@ -171,6 +173,29 @@ namespace SistemaTaller
                 }
             }
 
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+           /* Vehiculo vehiculo = new Vehiculo()
+            {
+                Año = 2009,Estado="Bueno",Interno=308,Modelo="F100",Patente = "WWW168",Sucursal = "San Pedro"
+            };
+            VehiculosDao vim = new VehiculosDao();
+            vim.InsertVehiculo(vehiculo);*/
+
+            Mecanico meca = new Mecanico()
+            {
+                Apellido = "Ibarra",
+                Celular = 5646989,
+                Dni = 360488,
+                FechaIngreso = DateTime.Now,
+                FechaNacimiento = DateTime.Now,
+                Legajo = "asd88",
+                Nombre = "Marcos"
+            };
+            MecanicosDao mec = new MecanicosDao();
+            mec.InsertMecanico(meca);
         }
     }
 }
