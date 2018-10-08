@@ -286,6 +286,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FloralWhite;
             this.groupBox1.Controls.Add(this.button37);
             this.groupBox1.Controls.Add(this.button38);
             this.groupBox1.Controls.Add(this.button39);
@@ -463,7 +464,7 @@
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.BackColor = System.Drawing.Color.FloralWhite;
             this.groupBox2.Controls.Add(this.button19);
             this.groupBox2.Controls.Add(this.button20);
             this.groupBox2.Controls.Add(this.button21);
@@ -716,6 +717,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.FloralWhite;
             this.groupBox3.Controls.Add(this.richTextBox1);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";

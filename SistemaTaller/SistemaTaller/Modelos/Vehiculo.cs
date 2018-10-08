@@ -15,7 +15,8 @@ namespace SistemaTaller.Modelos
         public string Modelo { get; set; }
         public int Año { get; set; }
         public string Tipo { get; set; }
-        
+        public string Interno { get; set; }
+
         public ICollection<TareaPendiente> TareaPendientes { get; set; }
     }
 }

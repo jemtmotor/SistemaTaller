@@ -14,10 +14,11 @@ namespace SistemaTaller
     public partial class fFiltroPendientes : Form
     {
         public Boolean filtro;
-        bool chequeo;
-        bool service;
-        bool reparacion;
-        bool aplicar;
+        int id;        
+        string tipo;
+        DateTime fechaInicio;
+        DateTime fechaFin;
+ 
            
         public fFiltroPendientes()
         {
@@ -43,44 +44,60 @@ namespace SistemaTaller
             listaSucursales.Insert(0, "Sin Filtro");
             cbxSucursal.DataSource = listaSucursales;
 
+            chkCheck.Checked = true;
+            chkReparacion.Checked = true;
 
+            dateFechaInicio.Value = new DateTime(1980,01,01);
+            dateFechaFin.Value = new DateTime(3018, 01, 01);
 
-            //Tipo
-            var tipos = from tablaVehiculo in contexto.Vehiculos
-                        select tablaVehiculo.Tipo;
-            var listaTipos = tipos.ToList();
-            listaTipos.Insert(0, "Sin Filtro");
-            cbxTipo.DataSource = listaTipos;
+            dateFechaFin.Enabled = false;
+            dateFechaInicio.Enabled = false;
 
-            reparacion = false;
-            service = false;
-            chequeo = false;
-            aplicar = false;
-            
         }
 
         private void btnAplicar_Click(object sender, EventArgs e)
         {
             filtro = true;
 
-            var id = txtID.Text;
-            id = id.Replace(" ", "");
-                        
-
-            if (chkCheck.Checked == true)
+            var idtxt = txtID.Text;
+            idtxt = idtxt.Replace(" ", "");
+            if(idtxt == "")
             {
-                chequeo = true;
+                id = 0;
             }
-
-            if (chkReparacion.Checked == true)
+            else
             {
-                reparacion = true;
-            }
+                try
+                {
+                    id = Convert.ToInt32(txtID.Text);
+                }catch(System.FormatException error)
+                {
+                    MessageBox.Show("El ID debe ser un numero entero", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                      
+                }
+                
+            }           
+            
 
-            if (chkService.Checked == true)
+
+            if ((chkCheck.Checked == true && chkReparacion.Checked == true) || (chkCheck.Checked == false && chkReparacion.Checked == false))
             {
-                service = true;
+                tipo = "";
             }
+            else
+            {
+                if (chkCheck.Checked == true && chkReparacion.Checked == false)
+                {
+                    tipo = "Chequeo";
+                }
+                if(chkCheck.Checked == false && chkReparacion.Checked == true)
+                {
+                    tipo = "Reparacion";
+                }
+            }           
+                
+
+           
 
             var dominio = cbxDominio.Text;
             dominio = dominio.Replace(" ", "");
@@ -88,22 +105,55 @@ namespace SistemaTaller
             var interno = cbxInterno.Text;
             interno = interno.Replace(" ", "");
 
+            if(interno != "")
+            {
+                try
+                {
+                    int controlFormatoInterno = Convert.ToInt32(cbxInterno.Text);
+                }catch(System.FormatException error)
+                {
+                    MessageBox.Show("El Numero de Interno debe ser un numero entero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+           
+
             var sucursal = cbxSucursal.SelectedValue.ToString();
-            var tipo = cbxTipo.SelectedValue.ToString();
+            sucursal = sucursal.Replace(" ", "");
 
-            if (sucursal == "Sin Filtro")
+
+            if (cbxSucursal.SelectedIndex == 0)
             {
-                sucursal = "";
+                sucursal = "";                
             }
 
-            if (tipo == "Sin Filtro")
-            {
-                tipo = "";
-            }
+            fechaFin = dateFechaFin.Value;
+            fechaInicio = dateFechaInicio.Value;
 
-
-            fTareasPendientes form = new fTareasPendientes(id,chequeo,reparacion,service,sucursal,interno,dominio,tipo);
+            fTareasPendientes form = new fTareasPendientes(id,sucursal,interno,dominio,tipo,filtro,fechaInicio,fechaFin);
             form.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(dateFechaFin.Enabled == false && dateFechaInicio.Enabled == false)
+            {
+                dateFechaInicio.Value = DateTime.Today;
+                dateFechaFin.Value = DateTime.Today;
+
+                dateFechaFin.Enabled = true;
+                dateFechaInicio.Enabled = true;
+            }
+            else
+            {
+                dateFechaInicio.Value = new DateTime(1980, 01, 01);
+                dateFechaFin.Value = new DateTime(3018, 01, 01);
+
+                dateFechaFin.Enabled = false;
+                dateFechaInicio.Enabled = false;
+
+            }
         }
     }
 }

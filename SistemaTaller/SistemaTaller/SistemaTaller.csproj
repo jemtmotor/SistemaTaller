@@ -232,6 +232,8 @@
   <ItemGroup>
     <None Include="Resources\LeBron_Poster.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\TALLER.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,15 +14,32 @@ namespace SistemaTaller
     public partial class fTareasPendientes : Form
     {
         public Boolean filtro;
+        int id;             
+        string sucursal;
+        string interno;
+        string dominio;
+        string tipo;
+        DateTime fechaInicio;
+        DateTime fechaFin;
+
 
         public fTareasPendientes()
         {
             InitializeComponent();
         }
 
-        public fTareasPendientes(string id,bool chequeo, bool reparacion, bool service, string sucursal, string interno, string dominio, string tipo)
+        public fTareasPendientes(int ide, string suc, string inter, string dom, string tip,bool fil,DateTime fechaI, DateTime fechaF)
         {
             InitializeComponent();
+
+            id = ide;                    
+            sucursal = suc;
+            interno = inter;
+            dominio = dom;
+            tipo = tip;
+            filtro = fil;
+            fechaInicio = fechaI;
+            fechaFin = fechaF;
         }
 
         public fTareasPendientes(Boolean fil)
@@ -69,9 +86,7 @@ namespace SistemaTaller
         private void fTareasPendientes_Load(object sender, EventArgs e)
         {
            
-            var contexto = new TallerContext();
-
-            filtro = false;
+            var contexto = new TallerContext();           
 
             if (filtro == false)
             {
@@ -86,13 +101,50 @@ namespace SistemaTaller
                                 Service = tablaTareaPendiente.Service,
                                 Tipo = tablaTareaPendiente.Tipo,
                                 Sucursal = tablaTareaPendiente.Interno.Sucursal,
-                                InternoVehiculo = tablaTareaPendiente.Interno.Id                              
+                                InternoVehiculo = tablaTareaPendiente.Interno.Interno,
+                                Dominio = tablaTareaPendiente.Interno.Patente
+
 
                             };
 
                 this.dataGridView1.DataSource = datos.ToList();
 
-            }            
+            }
+            else
+            {
+                var txtID = id.ToString();
+                if (id == 0)
+                {
+                    txtID = "";
+                }
+                
+
+                var datos = from tablaTarePendiente in contexto.TareaPendientes
+                                where (tablaTarePendiente.Id.ToString().Contains(txtID)) &&
+                                (tablaTarePendiente.Tipo.Contains(tipo))&&                            
+                                (tablaTarePendiente.Interno.Sucursal.Contains(sucursal))&&
+                                (tablaTarePendiente.Interno.Patente.Contains(dominio))&&
+                                (tablaTarePendiente.Interno.Interno.Contains(interno))&&
+                                (tablaTarePendiente.FechaTarea >= fechaInicio && tablaTarePendiente.FechaTarea <= fechaFin)
+                                select new
+                                {
+                                    ID = tablaTarePendiente.Id,
+                                    Fecha = tablaTarePendiente.FechaTarea,
+                                    Monto = tablaTarePendiente.Monto,
+                                    Service = tablaTarePendiente.Service,
+                                    Tipo = tablaTarePendiente.Tipo,
+                                    Sucursal = tablaTarePendiente.Interno.Sucursal,
+                                    InternoVehiculo = tablaTarePendiente.Interno.Interno,
+                                    Dominio = tablaTarePendiente.Interno.Patente
+                                };
+                this.dataGridView1.DataSource = datos.ToList();               
+
+                
+
+
+
+            }
+                
 
             this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -111,7 +163,9 @@ namespace SistemaTaller
                             Monto = tablaTareaPendiente.Monto,
                             Service = tablaTareaPendiente.Service,
                             Tipo = tablaTareaPendiente.Tipo,
-                            InternoVehiculo = tablaTareaPendiente.Interno.Id,
+                            Sucursal = tablaTareaPendiente.Interno.Sucursal,
+                            InternoVehiculo = tablaTareaPendiente.Interno.Interno,
+                            Dominio = tablaTareaPendiente.Interno.Patente
 
                         };
 
