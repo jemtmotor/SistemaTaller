@@ -18,6 +18,10 @@ namespace SistemaTaller
         string tipo;
         DateTime fechaInicio;
         DateTime fechaFin;
+        double montoIn;
+        double montoFn;
+        string nombre;
+        string apellido;
 
         public fFiltro1()
         {
@@ -55,6 +59,13 @@ namespace SistemaTaller
 
             dateFechaFin.Enabled = false;
             dateFechaInicio.Enabled = false;
+
+            txtMonIni.Text = "0";
+            txtMonFin.Text = "1000000000000000000";
+
+            txtMonFin.Enabled = false;
+            txtMonIni.Enabled = false;
+
         }
 
         private void btnAc1_Click(object sender, EventArgs e)
@@ -80,84 +91,126 @@ namespace SistemaTaller
 
         private void button1_Click(object sender, EventArgs e)
         {
-            filtro = true;
-
-            var idtxt = txtID.Text;
-            idtxt = idtxt.Replace(" ", "");
-            if (idtxt == "")
+            try
             {
-                id = 0;
+                filtro = true;
+
+                //ID
+                var idtxt = txtID.Text;
+                idtxt = idtxt.Replace(" ", "");
+                if (idtxt == "")
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt32(txtID.Text);                  
+                }
+
+                //MONTO INICIAL Y MONTO FINAL
+                var montoInTx = txtMonIni.Text;
+                montoInTx = montoInTx.Replace(" ", "");
+
+                var montoFinTx = txtMonFin.Text;
+                montoFinTx = montoFinTx.Replace(" ", "");
+
+                if (montoFinTx != "" || montoInTx != "")
+                {
+                    montoIn = Convert.ToDouble(montoInTx);
+                    montoFn = Convert.ToDouble(montoFinTx);
+                }
+
+
+
+                //TIPO
+                if ((chkCheck.Checked == true && chkReparacion.Checked == true) || (chkCheck.Checked == false && chkReparacion.Checked == false))
+                {
+                    tipo = "";
+                }
+                else
+                {
+                    if (chkCheck.Checked == true && chkReparacion.Checked == false)
+                    {
+                        tipo = "Chequeo";
+                    }
+                    if (chkCheck.Checked == false && chkReparacion.Checked == true)
+                    {
+                        tipo = "Reparacion";
+                    }
+                }
+
+
+
+                //DOMINIO
+                var dominio = cbxDominio.Text;
+                dominio = dominio.Replace(" ", "");
+                dominio = dominio.ToUpper();
+
+                //INTERNO
+                var interno = cbxInterno.Text;
+                interno = interno.Replace(" ", "");
+
+
+                if (interno != "")
+                {                                       
+                    int controlFormatoInterno = Convert.ToInt32(cbxInterno.Text);                
+                }
+
+                //NOMBRE
+                nombre = txtNombre.Text;
+                nombre = nombre.Replace(" ", "");
+                nombre = nombre.ToUpper();
+
+                //APELLIDO
+                apellido = txtApellido.Text;
+                apellido = apellido.Replace(" ", "");
+                apellido = apellido.ToUpper();
+
+                //SUCURSAL
+                var sucursal = cbxSucursal.SelectedValue.ToString();
+                sucursal = sucursal.Replace(" ", "");
+
+
+                if (cbxSucursal.SelectedIndex == 0)
+                {
+                    sucursal = "";
+                }
+
+                //FECHA INICIO Y FECHA FIN
+                fechaFin = dateFechaFin.Value;
+                fechaInicio = dateFechaInicio.Value;
+
+                //
+                fListadoServicio form = new fListadoServicio(id, sucursal, interno, dominio, tipo, filtro, fechaInicio, fechaFin, nombre, apellido, montoIn, montoFn);
+                form.Show();
+                this.Close();
+            }
+            catch (System.FormatException error)
+            {
+                MessageBox.Show("Los campos 'ID','Interno' y 'Montos' deben ser numericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnAc2_Click(object sender, EventArgs e)
+        {
+            if (txtMonIni.Enabled == false && txtMonFin.Enabled == false)
+            {
+                txtMonIni.Text = ""; 
+                txtMonFin.Text = "";
+
+                txtMonIni.Enabled = true;
+                txtMonFin.Enabled = true;
             }
             else
             {
-                try
-                {
-                    id = Convert.ToInt32(txtID.Text);
-                }
-                catch (System.FormatException error)
-                {
-                    MessageBox.Show("El ID debe ser un numero entero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMonIni.Text = "0";
+                txtMonFin.Text = "100000000000000000000000000000000000000000";
 
-                }
+                txtMonIni.Enabled = false;
+                txtMonFin.Enabled = false;
 
             }
-
-
-
-            if ((chkCheck.Checked == true && chkReparacion.Checked == true) || (chkCheck.Checked == false && chkReparacion.Checked == false))
-            {
-                tipo = "";
-            }
-            else
-            {
-                if (chkCheck.Checked == true && chkReparacion.Checked == false)
-                {
-                    tipo = "Chequeo";
-                }
-                if (chkCheck.Checked == false && chkReparacion.Checked == true)
-                {
-                    tipo = "Reparacion";
-                }
-            }
-
-
-
-
-            var dominio = cbxDominio.Text;
-            dominio = dominio.Replace(" ", "");
-
-            var interno = cbxInterno.Text;
-            interno = interno.Replace(" ", "");
-
-            if (interno != "")
-            {
-                try
-                {
-                    int controlFormatoInterno = Convert.ToInt32(cbxInterno.Text);
-                }
-                catch (System.FormatException error)
-                {
-                    MessageBox.Show("El Numero de Interno debe ser un numero entero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-            }
-
-
-            var sucursal = cbxSucursal.SelectedValue.ToString();
-            sucursal = sucursal.Replace(" ", "");
-
-
-            if (cbxSucursal.SelectedIndex == 0)
-            {
-                sucursal = "";
-            }
-
-            fechaFin = dateFechaFin.Value;
-            fechaInicio = dateFechaInicio.Value;
-
-            fListadoServicio form = new fListadoServicio(id, sucursal, interno, dominio, tipo, filtro, fechaInicio, fechaFin);
-            form.Show();
-            this.Close();
         }
     }
 }

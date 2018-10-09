@@ -34,7 +34,7 @@ namespace SistemaTaller
         }
 
         private void fFiltroPendientes_Load(object sender, EventArgs e)
-        {
+        {           
             var contexto = new TallerContext();
 
             //Sucursal
@@ -57,82 +57,81 @@ namespace SistemaTaller
 
         private void btnAplicar_Click(object sender, EventArgs e)
         {
-            filtro = true;
-
-            var idtxt = txtID.Text;
-            idtxt = idtxt.Replace(" ", "");
-            if(idtxt == "")
+            try
             {
-                id = 0;
+                filtro = true;
+
+                //ID
+                var idtxt = txtID.Text;
+                idtxt = idtxt.Replace(" ", "");
+                if (idtxt == "")
+                {
+                    id = 0;
+                }
+                else
+                {                    
+                    id = Convert.ToInt32(txtID.Text);                    
+                }
+
+
+                //TIPO
+                if ((chkCheck.Checked == true && chkReparacion.Checked == true) || (chkCheck.Checked == false && chkReparacion.Checked == false))
+                {
+                    tipo = "";
+                }
+                else
+                {
+                    if (chkCheck.Checked == true && chkReparacion.Checked == false)
+                    {
+                        tipo = "Chequeo";
+                    }
+                    if (chkCheck.Checked == false && chkReparacion.Checked == true)
+                    {
+                        tipo = "Reparacion";
+                    }
+                }
+
+
+
+                //DOMINIO
+                var dominio = cbxDominio.Text;
+                dominio = dominio.Replace(" ", "");
+                dominio = dominio.ToUpper();
+
+                //INTERNO
+                var interno = cbxInterno.Text;
+                interno = interno.Replace(" ", "");
+
+                if (interno != "")
+                {                    
+                    int controlFormatoInterno = Convert.ToInt32(cbxInterno.Text);                    
+                }
+
+
+                //SUCURSAL
+                var sucursal = cbxSucursal.SelectedValue.ToString();
+                sucursal = sucursal.Replace(" ", "");
+
+
+                if (cbxSucursal.SelectedIndex == 0)
+                {
+                    sucursal = "";
+                }
+
+                fechaFin = dateFechaFin.Value;
+                fechaInicio = dateFechaInicio.Value;
+
+                //
+                fTareasPendientes form = new fTareasPendientes(id, sucursal, interno, dominio, tipo, filtro, fechaInicio, fechaFin);
+                form.Show();
+                this.Close();
+
             }
-            else
+            catch (System.FormatException error)
             {
-                try
-                {
-                    id = Convert.ToInt32(txtID.Text);
-                }catch(System.FormatException error)
-                {
-                    MessageBox.Show("El ID debe ser un numero entero", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                                      
-                }
-                
-            }           
-            
-
-
-            if ((chkCheck.Checked == true && chkReparacion.Checked == true) || (chkCheck.Checked == false && chkReparacion.Checked == false))
-            {
-                tipo = "";
+                MessageBox.Show("Los campos 'ID' e 'Interno' deben ser numericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                if (chkCheck.Checked == true && chkReparacion.Checked == false)
-                {
-                    tipo = "Chequeo";
-                }
-                if(chkCheck.Checked == false && chkReparacion.Checked == true)
-                {
-                    tipo = "Reparacion";
-                }
-            }           
-                
-
            
-
-            var dominio = cbxDominio.Text;
-            dominio = dominio.Replace(" ", "");
-
-            var interno = cbxInterno.Text;
-            interno = interno.Replace(" ", "");
-
-            if(interno != "")
-            {
-                try
-                {
-                    int controlFormatoInterno = Convert.ToInt32(cbxInterno.Text);
-                }catch(System.FormatException error)
-                {
-                    MessageBox.Show("El Numero de Interno debe ser un numero entero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-            }
-           
-
-            var sucursal = cbxSucursal.SelectedValue.ToString();
-            sucursal = sucursal.Replace(" ", "");
-
-
-            if (cbxSucursal.SelectedIndex == 0)
-            {
-                sucursal = "";                
-            }
-
-            fechaFin = dateFechaFin.Value;
-            fechaInicio = dateFechaInicio.Value;
-
-            fTareasPendientes form = new fTareasPendientes(id,sucursal,interno,dominio,tipo,filtro,fechaInicio,fechaFin);
-            form.Show();
-            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

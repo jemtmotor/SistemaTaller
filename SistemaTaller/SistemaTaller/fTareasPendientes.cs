@@ -96,8 +96,7 @@ namespace SistemaTaller
                             select new
                             {
                                 ID = tablaTareaPendiente.Id,
-                                Fecha = tablaTareaPendiente.FechaTarea,
-                                Monto = tablaTareaPendiente.Monto,
+                                Fecha = tablaTareaPendiente.FechaTarea,                               
                                 Service = tablaTareaPendiente.Service,
                                 Tipo = tablaTareaPendiente.Tipo,
                                 Sucursal = tablaTareaPendiente.Interno.Sucursal,
@@ -123,14 +122,13 @@ namespace SistemaTaller
                                 where (tablaTarePendiente.Id.ToString().Contains(txtID)) &&
                                 (tablaTarePendiente.Tipo.Contains(tipo))&&                            
                                 (tablaTarePendiente.Interno.Sucursal.Contains(sucursal))&&
-                                (tablaTarePendiente.Interno.Patente.Contains(dominio))&&
+                                (tablaTarePendiente.Interno.Patente.ToUpper().Contains(dominio))&&
                                 (tablaTarePendiente.Interno.Interno.Contains(interno))&&
                                 (tablaTarePendiente.FechaTarea >= fechaInicio && tablaTarePendiente.FechaTarea <= fechaFin)
                                 select new
                                 {
                                     ID = tablaTarePendiente.Id,
-                                    Fecha = tablaTarePendiente.FechaTarea,
-                                    Monto = tablaTarePendiente.Monto,
+                                    Fecha = tablaTarePendiente.FechaTarea,                                    
                                     Service = tablaTarePendiente.Service,
                                     Tipo = tablaTarePendiente.Tipo,
                                     Sucursal = tablaTarePendiente.Interno.Sucursal,

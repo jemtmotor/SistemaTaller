@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.btnAc1 = new System.Windows.Forms.Button();
+            this.txtMonFin = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtMonIni = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnAc1 = new System.Windows.Forms.Button();
             this.btnAc2 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -67,9 +67,9 @@
             // 
             this.groupBox3.Controls.Add(this.btnAc2);
             this.groupBox3.Controls.Add(this.btnAc1);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.txtMonFin);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.textBox9);
+            this.groupBox3.Controls.Add(this.txtMonIni);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Controls.Add(this.groupBox1);
@@ -85,18 +85,28 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(6, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(489, 491);
+            this.groupBox3.Size = new System.Drawing.Size(474, 491);
             this.groupBox3.TabIndex = 40;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtrar";
             // 
-            // textBox10
+            // btnAc1
             // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(208, 433);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(103, 20);
-            this.textBox10.TabIndex = 44;
+            this.btnAc1.Location = new System.Drawing.Point(324, 359);
+            this.btnAc1.Name = "btnAc1";
+            this.btnAc1.Size = new System.Drawing.Size(131, 27);
+            this.btnAc1.TabIndex = 45;
+            this.btnAc1.Text = "Activar/Desactivar";
+            this.btnAc1.UseVisualStyleBackColor = true;
+            this.btnAc1.Click += new System.EventHandler(this.btnAc1_Click);
+            // 
+            // txtMonFin
+            // 
+            this.txtMonFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonFin.Location = new System.Drawing.Point(208, 433);
+            this.txtMonFin.Name = "txtMonFin";
+            this.txtMonFin.Size = new System.Drawing.Size(103, 20);
+            this.txtMonFin.TabIndex = 44;
             // 
             // label16
             // 
@@ -107,13 +117,13 @@
             this.label16.TabIndex = 43;
             this.label16.Text = "y";
             // 
-            // textBox9
+            // txtMonIni
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(60, 433);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(101, 20);
-            this.textBox9.TabIndex = 42;
+            this.txtMonIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonIni.Location = new System.Drawing.Point(60, 433);
+            this.txtMonIni.Name = "txtMonIni";
+            this.txtMonIni.Size = new System.Drawing.Size(101, 20);
+            this.txtMonIni.TabIndex = 42;
             // 
             // label15
             // 
@@ -132,7 +142,7 @@
             this.groupBox2.Controls.Add(this.txtNombre);
             this.groupBox2.Location = new System.Drawing.Point(39, 218);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(427, 90);
+            this.groupBox2.Size = new System.Drawing.Size(407, 90);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mecanico Responsable";
@@ -141,7 +151,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(37, 36);
+            this.label7.Location = new System.Drawing.Point(16, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 23;
@@ -150,7 +160,7 @@
             // txtApellido
             // 
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellido.Location = new System.Drawing.Point(107, 36);
+            this.txtApellido.Location = new System.Drawing.Point(69, 44);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(88, 20);
             this.txtApellido.TabIndex = 20;
@@ -159,7 +169,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(210, 39);
+            this.label8.Location = new System.Drawing.Point(171, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 24;
@@ -168,7 +178,7 @@
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(269, 33);
+            this.txtNombre.Location = new System.Drawing.Point(221, 44);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(101, 20);
             this.txtNombre.TabIndex = 22;
@@ -183,7 +193,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Location = new System.Drawing.Point(38, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(428, 120);
+            this.groupBox1.Size = new System.Drawing.Size(408, 120);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vehiculo";
@@ -203,7 +213,7 @@
             // cbxInterno
             // 
             this.cbxInterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxInterno.Location = new System.Drawing.Point(303, 32);
+            this.cbxInterno.Location = new System.Drawing.Point(286, 32);
             this.cbxInterno.Name = "cbxInterno";
             this.cbxInterno.Size = new System.Drawing.Size(102, 20);
             this.cbxInterno.TabIndex = 42;
@@ -221,7 +231,7 @@
             // cbxDominio
             // 
             this.cbxDominio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxDominio.Location = new System.Drawing.Point(109, 79);
+            this.cbxDominio.Location = new System.Drawing.Point(109, 81);
             this.cbxDominio.Name = "cbxDominio";
             this.cbxDominio.Size = new System.Drawing.Size(88, 20);
             this.cbxDominio.TabIndex = 40;
@@ -240,7 +250,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(32, 82);
+            this.label12.Location = new System.Drawing.Point(25, 84);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(48, 13);
             this.label12.TabIndex = 38;
@@ -335,7 +345,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(386, 519);
+            this.btnCancelar.Location = new System.Drawing.Point(371, 519);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(109, 31);
             this.btnCancelar.TabIndex = 41;
@@ -346,7 +356,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(10, 519);
+            this.button1.Location = new System.Drawing.Point(6, 519);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 31);
             this.button1.TabIndex = 42;
@@ -354,30 +364,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnAc1
-            // 
-            this.btnAc1.Location = new System.Drawing.Point(324, 359);
-            this.btnAc1.Name = "btnAc1";
-            this.btnAc1.Size = new System.Drawing.Size(142, 27);
-            this.btnAc1.TabIndex = 45;
-            this.btnAc1.Text = "Activar/Desactivar";
-            this.btnAc1.UseVisualStyleBackColor = true;
-            this.btnAc1.Click += new System.EventHandler(this.btnAc1_Click);
-            // 
             // btnAc2
             // 
-            this.btnAc2.Location = new System.Drawing.Point(324, 426);
+            this.btnAc2.Location = new System.Drawing.Point(324, 431);
             this.btnAc2.Name = "btnAc2";
-            this.btnAc2.Size = new System.Drawing.Size(142, 27);
+            this.btnAc2.Size = new System.Drawing.Size(131, 27);
             this.btnAc2.TabIndex = 46;
             this.btnAc2.Text = "Activar/Desactivar";
             this.btnAc2.UseVisualStyleBackColor = true;
+            this.btnAc2.Click += new System.EventHandler(this.btnAc2_Click);
             // 
             // fFiltro1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 574);
+            this.ClientSize = new System.Drawing.Size(488, 574);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.groupBox3);
@@ -397,9 +398,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtMonFin;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtMonIni;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
@@ -424,7 +425,7 @@
         private System.Windows.Forms.TextBox cbxDominio;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnAc2;
         private System.Windows.Forms.Button btnAc1;
+        private System.Windows.Forms.Button btnAc2;
     }
 }

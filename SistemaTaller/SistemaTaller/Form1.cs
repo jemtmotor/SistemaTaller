@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaTaller.Modelos;
 
 namespace SistemaTaller
 {
@@ -124,19 +125,7 @@ namespace SistemaTaller
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked == true)
-            {
-                DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Taea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    fCargarReparacion form = new fCargarReparacion();
-                    form.Show();
-                }
-                else
-                {
-                    checkBox1.Checked = false;
-                }
-            }          
+           
 
         }
 
@@ -161,20 +150,146 @@ namespace SistemaTaller
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked == true)
-            {
-                DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    fCargarCheck form = new fCargarCheck();
-                    form.Show();
-                }
-                else
-                {
-                    checkBox2.Checked = false;
-                }
-            }
+            
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+
+            var contexto = new TallerContext();
+
+            DateTime FechaDeHoy = DateTime.Today;
+
+            //Tareas del Dia
+            var datosDia = from tablaTareaPendiente in contexto.TareaPendientes
+                        where (tablaTareaPendiente.FechaRecordatorio == FechaDeHoy)
+                        select new
+                        {
+                            ID = tablaTareaPendiente.Id,
+                            Tipo = tablaTareaPendiente.Tipo,
+                            Service = tablaTareaPendiente.Service,
+                            Interno = tablaTareaPendiente.Interno.Interno,
+                            Patente = tablaTareaPendiente.Interno.Patente,
+                            Fecha = tablaTareaPendiente.FechaRecordatorio,
+                            Sucursal = tablaTareaPendiente.Interno.Sucursal                           
+                        };
+
+            this.gridDia.DataSource = datosDia.ToList();       
+
+            this.gridDia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
+            //Tareas Atrasadas
+            var datosAtrasados = from tablaTareaPendiente in contexto.TareaPendientes
+                           where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy)
+                           select new
+                           {
+                               ID = tablaTareaPendiente.Id,
+                               Tipo = tablaTareaPendiente.Tipo,
+                               Service = tablaTareaPendiente.Service,
+                               Interno = tablaTareaPendiente.Interno.Interno,
+                               Patente = tablaTareaPendiente.Interno.Patente,
+                               Fecha = tablaTareaPendiente.FechaRecordatorio,
+                               Sucursal = tablaTareaPendiente.Interno.Sucursal
+                           };
+
+            this.gridAtras.DataSource = datosAtrasados.ToList();
+
+            this.gridAtras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
+            //Proximas tareas
+            var fechaCom1 = FechaDeHoy.AddDays(1);
+            var fechaCom2 = FechaDeHoy.AddDays(14);
+
+            var datosProximos = from tablaTareaPendiente in contexto.TareaPendientes
+                                 where ((tablaTareaPendiente.FechaRecordatorio >= fechaCom1) && (tablaTareaPendiente.FechaRecordatorio <= fechaCom2))
+                                 select new
+                                 {
+                                     ID = tablaTareaPendiente.Id,
+                                     Tipo = tablaTareaPendiente.Tipo,
+                                     Service = tablaTareaPendiente.Service,
+                                     Interno = tablaTareaPendiente.Interno.Interno,
+                                     Patente = tablaTareaPendiente.Interno.Patente,
+                                     Fecha = tablaTareaPendiente.FechaRecordatorio,
+                                     Sucursal = tablaTareaPendiente.Interno.Sucursal
+                                 };
+
+            this.gridProx.DataSource = datosProximos.ToList();
+
+            this.gridProx.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            //DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.Yes)
+            //{
+            //    fCargarCheck form = new fCargarCheck();
+            //    form.Show();
+            //}
+            //else
+            //{
+            //    checkBox2.Checked = false;
+            //}
+        }
+
+        private void gridDia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void gridAtras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button2.Enabled = true;
+        }
+
+        private void gridProx_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button3.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+               fCargarCheck form = new fCargarCheck();
+               form.Show();
+            }
+            else
+            {
+                button1.Enabled = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                fCargarCheck form = new fCargarCheck();
+                form.Show();
+            }
+            else
+            {
+                button1.Enabled = false;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                fCargarCheck form = new fCargarCheck();
+                form.Show();
+            }
+            else
+            {
+                button1.Enabled = false;
+            }
         }
     }
 }

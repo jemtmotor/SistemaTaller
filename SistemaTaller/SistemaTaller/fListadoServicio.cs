@@ -21,13 +21,17 @@ namespace SistemaTaller
         string tipo;
         DateTime fechaInicio;
         DateTime fechaFin;
+        string nombre;
+        string apellido;
+        decimal montoInicio;
+        decimal montoFin;
 
         public fListadoServicio()
         {
             InitializeComponent();
         }
 
-        public fListadoServicio(int ide, string suc, string inter, string dom, string tip, bool fil, DateTime fechaI, DateTime fechaF)
+        public fListadoServicio(int ide, string suc, string inter, string dom, string tip, bool fil, DateTime fechaI, DateTime fechaF, string nom, string ape, double ini, double fin)
         {
             InitializeComponent();
 
@@ -39,6 +43,10 @@ namespace SistemaTaller
             filtro = fil;
             fechaInicio = fechaI;
             fechaFin = fechaF;
+            nombre = nom;
+            apellido = ape;
+            montoInicio = Convert.ToDecimal(ini);
+            montoFin = Convert.ToDecimal(fin);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -93,9 +101,12 @@ namespace SistemaTaller
                             where (tablaTareaPendiente.Id.ToString().Contains(txtID)) &&
                             (tablaTareaPendiente.Tipo.Contains(tipo)) &&
                             (tablaTareaPendiente.Interno.Sucursal.Contains(sucursal)) &&
-                            (tablaTareaPendiente.Interno.Patente.Contains(dominio)) &&
+                            (tablaTareaPendiente.Interno.Patente.ToUpper().Contains(dominio)) &&
                             (tablaTareaPendiente.Interno.Interno.Contains(interno)) &&
-                            (tablaTareaPendiente.FechaTarea >= fechaInicio && tablaTareaPendiente.FechaTarea <= fechaFin)
+                            (tablaTareaPendiente.FechaTarea >= fechaInicio && tablaTareaPendiente.FechaTarea <= fechaFin)&&
+                            (tablaTareaPendiente.Mecanico.Nombre.ToUpper().Contains(nombre))&&
+                            (tablaTareaPendiente.Mecanico.Apellido.ToUpper().Contains(apellido))&&
+                            ((tablaTareaPendiente.Monto >= montoInicio)&&(tablaTareaPendiente.Monto <= montoFin))
                             select new
                             {
                                 ID = tablaTareaPendiente.Id,
