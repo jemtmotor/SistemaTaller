@@ -235,7 +235,7 @@ namespace SistemaTaller
             Vehiculo vec = new Vehiculo();
             foreach (var vehiculo in vehiculos)
             {
-                if (interno == vehiculo.Id)
+                if (interno == vehiculo.Interno)
                 {
                     vec = vehiculo;
                 }
@@ -243,18 +243,24 @@ namespace SistemaTaller
             Int32.TryParse(tbMonto.Text, out var monto);
             TareaPendiente tareaPendiente = new TareaPendiente
             {
-                //Diagnosticos = Diagnosticos,
+                Diagnosticos = Diagnosticos,
                 Estado = !Diagnosticos.Any(),
                 FechaTarea = dTPfechaTarea.Value,
                 FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),
-                //Mecanico = mec,
-                //Interno = vec,
+                MecanicoId = mec.MecanicoId,
+                VehiculoId = vec.VehiculoId,
                 Monto =(Decimal) monto,
                 Service = cbService.Checked
             };
             var TareaDao = new TareaPendienteDao();
                 TareaDao.InsertTareaPendiente(tareaPendiente);
-
+            TareaPendiente ultima = TareaDao.GetUltimoPendiente();
+            DiagnosticoDao diagDao = new DiagnosticoDao();
+            foreach (var diag in Diagnosticos)
+            {
+                diag.TareaPendienteId = ultima.TareaPendienteId;
+                diagDao.InsertDiagnostico(diag);
+            }
 
             int x = 1 ;
 

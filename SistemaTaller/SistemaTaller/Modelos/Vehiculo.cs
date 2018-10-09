@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,8 @@ namespace SistemaTaller.Modelos
 {
     public class Vehiculo
     {
-        public int Id { get; set; }
+        [Key]
+        public int VehiculoId { get; set; }
         public string Estado { get; set; }
         public string Sucursal { get; set; }
         public string Patente { get; set; }

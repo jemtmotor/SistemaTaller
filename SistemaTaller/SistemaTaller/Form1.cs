@@ -177,14 +177,14 @@ namespace SistemaTaller
 
         private void button22_Click(object sender, EventArgs e)
         {
-           /* Vehiculo vehiculo = new Vehiculo()
-            {
-                Año = 2009,Estado="Bueno",Interno=308,Modelo="F100",Patente = "WWW168",Sucursal = "San Pedro"
-            };
-            VehiculosDao vim = new VehiculosDao();
-            vim.InsertVehiculo(vehiculo);*/
+            /* Vehiculo vehiculo = new Vehiculo()
+             {
+                 Año = 2009,Estado="Bueno",Interno=308,Modelo="F100",Patente = "WWW168",Sucursal = "San Pedro"
+             };
+             VehiculosDao vim = new VehiculosDao();
+             vim.InsertVehiculo(vehiculo);*/
 
-            Mecanico meca = new Mecanico()
+            /*Mecanico meca = new Mecanico()
             {
                 Apellido = "Ibarra",
                 Celular = 5646989,
@@ -195,7 +195,20 @@ namespace SistemaTaller
                 Nombre = "Marcos"
             };
             MecanicosDao mec = new MecanicosDao();
-            mec.InsertMecanico(meca);
+            mec.InsertMecanico(meca);*/
+            /*TareaPendiente tp = new TareaPendiente()
+            {
+                FechaTarea = DateTime.Now,Estado=false,FechaRecordatorio = DateTime.Now.AddMonths(1),VehiculoId = 1,MecanicoId = 1,Service = false,Monto = 55656,Tipo = "Chequeo"
+            };
+            TareaPendienteDao tpDao = new TareaPendienteDao();
+            tpDao.InsertTareaPendiente(tp);*/
+            var TareaPendiente = new TareaPendiente()
+            {
+                TareaPendienteId = 3,Estado=true,FechaTarea = DateTime.Now.AddDays(5),Monto = 2333,VehiculoId = 1,MecanicoId = 1
+                
+            };
+            TareaPendienteDao tareaPendienteDao = new TareaPendienteDao();
+            tareaPendienteDao.Update(TareaPendiente);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace SistemaTaller.Modelos
         public string Sector { get; set; }
         public bool Estado { get; set; }
         public string Parte { get; set; }
+
+        public int TareaPendienteId { get; set; }
         public TareaPendiente TareaPendiente { get; set; }
     }
 }

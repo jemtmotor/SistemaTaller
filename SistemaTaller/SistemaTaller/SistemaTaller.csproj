@@ -58,6 +58,7 @@
     <Compile Include="AgregarUnidadRespuesto.Designer.cs">
       <DependentUpon>AgregarUnidadRespuesto.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosDao\DiagnosticoDao.cs" />
     <Compile Include="DatosDao\MecanicosDao.cs" />
     <Compile Include="DatosDao\TareaPendienteDao.cs" />
     <Compile Include="DatosDao\VehiculosDao.cs" />
