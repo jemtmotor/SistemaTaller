@@ -9,7 +9,7 @@ namespace SistemaTaller.Modelos
 {
     public class TallerContext : DbContext
     {
-        public TallerContext() : base( "SitemaTaller2")
+        public TallerContext() : base( "SistemaTaller3")
         {
 
         }

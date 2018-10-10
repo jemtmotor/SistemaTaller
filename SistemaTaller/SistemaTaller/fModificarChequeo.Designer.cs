@@ -1,6 +1,6 @@
 ﻿namespace SistemaTaller
 {
-    partial class fCargarCheck
+    partial class fModificarChequeo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCargarCheck));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbInterno = new System.Windows.Forms.TextBox();
-            this.dTPfechaTarea = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fModificarChequeo));
             this.TabChequeo = new System.Windows.Forms.TabControl();
             this.tabMotor = new System.Windows.Forms.TabPage();
             this.MPerdFluidosEstado = new System.Windows.Forms.ComboBox();
@@ -120,6 +113,11 @@
             this.ELEngraseGralEstado = new System.Windows.Forms.ComboBox();
             this.ELEngraseGralObser = new System.Windows.Forms.TextBox();
             this.ELEngraseGralParte = new System.Windows.Forms.Label();
+            this.dTPfechaTarea = new System.Windows.Forms.DateTimePicker();
+            this.tbInterno = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbService = new System.Windows.Forms.CheckBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -128,6 +126,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tbMonto = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.TabChequeo.SuspendLayout();
             this.tabMotor.SuspendLayout();
             this.tabTrenDelantero.SuspendLayout();
@@ -137,75 +137,6 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(348, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(603, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CHECK-LIST DE MANTENIMIENTO";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(360, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Vehiculo:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(597, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Fecha:";
-            // 
-            // tbInterno
-            // 
-            this.tbInterno.Location = new System.Drawing.Point(427, 98);
-            this.tbInterno.Name = "tbInterno";
-            this.tbInterno.Size = new System.Drawing.Size(100, 20);
-            this.tbInterno.TabIndex = 3;
-            this.tbInterno.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.tbInterno.Leave += new System.EventHandler(this.tbInterno_Leave);
-            // 
-            // dTPfechaTarea
-            // 
-            this.dTPfechaTarea.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dTPfechaTarea.Location = new System.Drawing.Point(653, 98);
-            this.dTPfechaTarea.Name = "dTPfechaTarea";
-            this.dTPfechaTarea.Size = new System.Drawing.Size(102, 20);
-            this.dTPfechaTarea.TabIndex = 4;
-            this.dTPfechaTarea.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(927, 484);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 36);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Cargar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1110, 484);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 36);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // TabChequeo
             // 
             this.TabChequeo.Controls.Add(this.tabMotor);
@@ -213,11 +144,11 @@
             this.TabChequeo.Controls.Add(this.tabTransmision);
             this.TabChequeo.Controls.Add(this.tabTrenTrasero);
             this.TabChequeo.Controls.Add(this.EngraseYLuces);
-            this.TabChequeo.Location = new System.Drawing.Point(51, 140);
+            this.TabChequeo.Location = new System.Drawing.Point(12, 110);
             this.TabChequeo.Name = "TabChequeo";
             this.TabChequeo.SelectedIndex = 0;
             this.TabChequeo.Size = new System.Drawing.Size(743, 308);
-            this.TabChequeo.TabIndex = 52;
+            this.TabChequeo.TabIndex = 53;
             // 
             // tabMotor
             // 
@@ -252,7 +183,6 @@
             this.tabMotor.Size = new System.Drawing.Size(735, 282);
             this.tabMotor.TabIndex = 0;
             this.tabMotor.Text = "Motor";
-            this.tabMotor.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // MPerdFluidosEstado
             // 
@@ -521,7 +451,6 @@
             this.tabTrenDelantero.TabIndex = 1;
             this.tabTrenDelantero.Text = "Tren Delantero";
             this.tabTrenDelantero.UseVisualStyleBackColor = true;
-            this.tabTrenDelantero.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // TDEstNeumaEstado
             // 
@@ -534,7 +463,7 @@
             this.TDEstNeumaEstado.Name = "TDEstNeumaEstado";
             this.TDEstNeumaEstado.Size = new System.Drawing.Size(162, 21);
             this.TDEstNeumaEstado.TabIndex = 46;
-            this.TDEstNeumaEstado.SelectedIndexChanged += new System.EventHandler(this.TDEstNeumaEstado_SelectedIndexChanged_1);
+            this.TDEstNeumaEstado.SelectedIndexChanged += new System.EventHandler(this.TDEstNeumaEstado_SelectedIndexChanged);
             // 
             // TDEstNeumaObser
             // 
@@ -564,7 +493,7 @@
             this.TDAmortEstado.Name = "TDAmortEstado";
             this.TDAmortEstado.Size = new System.Drawing.Size(162, 21);
             this.TDAmortEstado.TabIndex = 43;
-            this.TDAmortEstado.SelectedIndexChanged += new System.EventHandler(this.TDAmortEstado_SelectedIndexChanged_1);
+            this.TDAmortEstado.SelectedIndexChanged += new System.EventHandler(this.TDAmortEstado_SelectedIndexChanged);
             // 
             // TDAmortObser
             // 
@@ -594,7 +523,7 @@
             this.TDCinFrenosEstado.Name = "TDCinFrenosEstado";
             this.TDCinFrenosEstado.Size = new System.Drawing.Size(162, 21);
             this.TDCinFrenosEstado.TabIndex = 40;
-            this.TDCinFrenosEstado.SelectedIndexChanged += new System.EventHandler(this.TDCinFrenosEstado_SelectedIndexChanged_1);
+            this.TDCinFrenosEstado.SelectedIndexChanged += new System.EventHandler(this.TDCinFrenosEstado_SelectedIndexChanged);
             // 
             // TDCinFrenosObser
             // 
@@ -624,7 +553,7 @@
             this.TDElasticosEstado.Name = "TDElasticosEstado";
             this.TDElasticosEstado.Size = new System.Drawing.Size(162, 21);
             this.TDElasticosEstado.TabIndex = 37;
-            this.TDElasticosEstado.SelectedIndexChanged += new System.EventHandler(this.TDElasticosEstado_SelectedIndexChanged_1);
+            this.TDElasticosEstado.SelectedIndexChanged += new System.EventHandler(this.TDElasticosEstado_SelectedIndexChanged);
             // 
             // TDElasticosObser
             // 
@@ -739,7 +668,7 @@
             this.TpalieresEstado.Name = "TpalieresEstado";
             this.TpalieresEstado.Size = new System.Drawing.Size(162, 21);
             this.TpalieresEstado.TabIndex = 61;
-            this.TpalieresEstado.SelectedIndexChanged += new System.EventHandler(this.TpalieresEstado_SelectedIndexChanged_1);
+            this.TpalieresEstado.SelectedIndexChanged += new System.EventHandler(this.TpalieresEstado_SelectedIndexChanged);
             // 
             // TpalieresObser
             // 
@@ -769,7 +698,7 @@
             this.TdiferencialEstado.Name = "TdiferencialEstado";
             this.TdiferencialEstado.Size = new System.Drawing.Size(162, 21);
             this.TdiferencialEstado.TabIndex = 58;
-            this.TdiferencialEstado.SelectedIndexChanged += new System.EventHandler(this.TdiferencialEstado_SelectedIndexChanged_1);
+            this.TdiferencialEstado.SelectedIndexChanged += new System.EventHandler(this.TdiferencialEstado_SelectedIndexChanged);
             // 
             // TdiferencialObser
             // 
@@ -799,7 +728,7 @@
             this.TEmbragueEstado.Name = "TEmbragueEstado";
             this.TEmbragueEstado.Size = new System.Drawing.Size(162, 21);
             this.TEmbragueEstado.TabIndex = 55;
-            this.TEmbragueEstado.SelectedIndexChanged += new System.EventHandler(this.TEmbragueEstado_SelectedIndexChanged_1);
+            this.TEmbragueEstado.SelectedIndexChanged += new System.EventHandler(this.TEmbragueEstado_SelectedIndexChanged);
             // 
             // TEmbragueObser
             // 
@@ -829,7 +758,7 @@
             this.TCardanYCrucEstado.Name = "TCardanYCrucEstado";
             this.TCardanYCrucEstado.Size = new System.Drawing.Size(162, 21);
             this.TCardanYCrucEstado.TabIndex = 52;
-            this.TCardanYCrucEstado.SelectedIndexChanged += new System.EventHandler(this.TCardanYCrucEstado_SelectedIndexChanged_1);
+            this.TCardanYCrucEstado.SelectedIndexChanged += new System.EventHandler(this.TCardanYCrucEstado_SelectedIndexChanged);
             // 
             // TCardanYCrucObser
             // 
@@ -859,7 +788,7 @@
             this.TCajaVeloEstado.Name = "TCajaVeloEstado";
             this.TCajaVeloEstado.Size = new System.Drawing.Size(162, 21);
             this.TCajaVeloEstado.TabIndex = 49;
-            this.TCajaVeloEstado.SelectedIndexChanged += new System.EventHandler(this.TCajaVeloEstado_SelectedIndexChanged_1);
+            this.TCajaVeloEstado.SelectedIndexChanged += new System.EventHandler(this.TCajaVeloEstado_SelectedIndexChanged);
             // 
             // TCajaVeloObser
             // 
@@ -914,7 +843,7 @@
             this.TTEstNeumaticoEstado.Name = "TTEstNeumaticoEstado";
             this.TTEstNeumaticoEstado.Size = new System.Drawing.Size(162, 21);
             this.TTEstNeumaticoEstado.TabIndex = 58;
-            this.TTEstNeumaticoEstado.SelectedIndexChanged += new System.EventHandler(this.TTEstNeumaticoEstado_SelectedIndexChanged_1);
+            this.TTEstNeumaticoEstado.SelectedIndexChanged += new System.EventHandler(this.TTEstNeumaticoEstado_SelectedIndexChanged);
             // 
             // TTEstNeumaticoObser
             // 
@@ -944,7 +873,7 @@
             this.TTAmortiEstado.Name = "TTAmortiEstado";
             this.TTAmortiEstado.Size = new System.Drawing.Size(162, 21);
             this.TTAmortiEstado.TabIndex = 55;
-            this.TTAmortiEstado.SelectedIndexChanged += new System.EventHandler(this.TTAmortiEstado_SelectedIndexChanged_1);
+            this.TTAmortiEstado.SelectedIndexChanged += new System.EventHandler(this.TTAmortiEstado_SelectedIndexChanged);
             // 
             // TTAmortiObser
             // 
@@ -974,7 +903,7 @@
             this.TTElasticosEstado.Name = "TTElasticosEstado";
             this.TTElasticosEstado.Size = new System.Drawing.Size(162, 21);
             this.TTElasticosEstado.TabIndex = 52;
-            this.TTElasticosEstado.SelectedIndexChanged += new System.EventHandler(this.TTElasticosEstado_SelectedIndexChanged_1);
+            this.TTElasticosEstado.SelectedIndexChanged += new System.EventHandler(this.TTElasticosEstado_SelectedIndexChanged);
             // 
             // TTElasticosObser
             // 
@@ -1004,7 +933,7 @@
             this.TTCinFrenosEstado.Name = "TTCinFrenosEstado";
             this.TTCinFrenosEstado.Size = new System.Drawing.Size(162, 21);
             this.TTCinFrenosEstado.TabIndex = 49;
-            this.TTCinFrenosEstado.SelectedIndexChanged += new System.EventHandler(this.TTCinFrenosEstado_SelectedIndexChanged_1);
+            this.TTCinFrenosEstado.SelectedIndexChanged += new System.EventHandler(this.TTCinFrenosEstado_SelectedIndexChanged);
             // 
             // TTCinFrenosObser
             // 
@@ -1034,7 +963,7 @@
             this.TTMazaRuleEstado.Name = "TTMazaRuleEstado";
             this.TTMazaRuleEstado.Size = new System.Drawing.Size(162, 21);
             this.TTMazaRuleEstado.TabIndex = 46;
-            this.TTMazaRuleEstado.SelectedIndexChanged += new System.EventHandler(this.TTMazaRuleEstado_SelectedIndexChanged_1);
+            this.TTMazaRuleEstado.SelectedIndexChanged += new System.EventHandler(this.TTMazaRuleEstado_SelectedIndexChanged);
             // 
             // TTMazaRuleObser
             // 
@@ -1080,7 +1009,7 @@
             this.ELctrolLucesEstado.Name = "ELctrolLucesEstado";
             this.ELctrolLucesEstado.Size = new System.Drawing.Size(162, 21);
             this.ELctrolLucesEstado.TabIndex = 55;
-            this.ELctrolLucesEstado.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.ELctrolLucesEstado.SelectedIndexChanged += new System.EventHandler(this.ELctrolLucesEstado_SelectedIndexChanged);
             // 
             // ELctrolLucesObser
             // 
@@ -1089,7 +1018,6 @@
             this.ELctrolLucesObser.Name = "ELctrolLucesObser";
             this.ELctrolLucesObser.Size = new System.Drawing.Size(344, 20);
             this.ELctrolLucesObser.TabIndex = 54;
-            this.ELctrolLucesObser.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // ELctrolLucesParte
             // 
@@ -1099,7 +1027,6 @@
             this.ELctrolLucesParte.Size = new System.Drawing.Size(169, 13);
             this.ELctrolLucesParte.TabIndex = 53;
             this.ELctrolLucesParte.Text = "CONTROL GENERAL DE LUCES";
-            this.ELctrolLucesParte.Click += new System.EventHandler(this.label11_Click);
             // 
             // ELEngraseGralEstado
             // 
@@ -1112,7 +1039,7 @@
             this.ELEngraseGralEstado.Name = "ELEngraseGralEstado";
             this.ELEngraseGralEstado.Size = new System.Drawing.Size(162, 21);
             this.ELEngraseGralEstado.TabIndex = 52;
-            this.ELEngraseGralEstado.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.ELEngraseGralEstado.SelectedIndexChanged += new System.EventHandler(this.ELEngraseGralEstado_SelectedIndexChanged);
             // 
             // ELEngraseGralObser
             // 
@@ -1121,7 +1048,6 @@
             this.ELEngraseGralObser.Name = "ELEngraseGralObser";
             this.ELEngraseGralObser.Size = new System.Drawing.Size(344, 20);
             this.ELEngraseGralObser.TabIndex = 51;
-            this.ELEngraseGralObser.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // ELEngraseGralParte
             // 
@@ -1131,7 +1057,50 @@
             this.ELEngraseGralParte.Size = new System.Drawing.Size(113, 13);
             this.ELEngraseGralParte.TabIndex = 50;
             this.ELEngraseGralParte.Text = "ENGRASE GENERAL";
-            this.ELEngraseGralParte.Click += new System.EventHandler(this.label12_Click_1);
+            // 
+            // dTPfechaTarea
+            // 
+            this.dTPfechaTarea.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dTPfechaTarea.Location = new System.Drawing.Point(568, 84);
+            this.dTPfechaTarea.Name = "dTPfechaTarea";
+            this.dTPfechaTarea.Size = new System.Drawing.Size(102, 20);
+            this.dTPfechaTarea.TabIndex = 58;
+            // 
+            // tbInterno
+            // 
+            this.tbInterno.Location = new System.Drawing.Point(342, 84);
+            this.tbInterno.Name = "tbInterno";
+            this.tbInterno.Size = new System.Drawing.Size(100, 20);
+            this.tbInterno.TabIndex = 57;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(512, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Fecha:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(275, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Vehiculo:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Location = new System.Drawing.Point(263, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(530, 39);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "MODIFICAR MANTENIMIENTO";
             // 
             // groupBox1
             // 
@@ -1142,10 +1111,10 @@
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.tbMonto);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Location = new System.Drawing.Point(821, 170);
+            this.groupBox1.Location = new System.Drawing.Point(794, 140);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(455, 278);
-            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             // 
             // cbService
@@ -1185,7 +1154,6 @@
             this.cbMecanicos.Name = "cbMecanicos";
             this.cbMecanicos.Size = new System.Drawing.Size(122, 24);
             this.cbMecanicos.TabIndex = 15;
-            this.cbMecanicos.SelectedIndexChanged += new System.EventHandler(this.cbMecanicos_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -1215,16 +1183,36 @@
             this.label19.TabIndex = 36;
             this.label19.Text = "Monto del Trabajo:";
             // 
-            // fCargarCheck
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1083, 454);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 36);
+            this.button2.TabIndex = 60;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(900, 454);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 36);
+            this.button1.TabIndex = 59;
+            this.button1.Text = "Cargar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // fModificarChequeo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1274, 512);
+            this.ClientSize = new System.Drawing.Size(1281, 521);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.TabChequeo);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dTPfechaTarea);
@@ -1232,10 +1220,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "fCargarCheck";
-            this.Text = "Cargar Check-List ";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.fCargarCheck_Load);
+            this.Controls.Add(this.TabChequeo);
+            this.Name = "fModificarChequeo";
+            this.Text = "fModificarChequeo";
+            this.Load += new System.EventHandler(this.fModificarChequeo_Load);
             this.TabChequeo.ResumeLayout(false);
             this.tabMotor.ResumeLayout(false);
             this.tabMotor.PerformLayout();
@@ -1256,21 +1244,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbInterno;
-        private System.Windows.Forms.DateTimePicker dTPfechaTarea;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl TabChequeo;
         private System.Windows.Forms.TabPage tabMotor;
-        private System.Windows.Forms.TabPage tabTrenDelantero;
-        private System.Windows.Forms.TabPage tabTransmision;
-        private System.Windows.Forms.TabPage tabTrenTrasero;
-        private System.Windows.Forms.ComboBox MAceiteEstado;
-        private System.Windows.Forms.TextBox MAceiteObser;
-        private System.Windows.Forms.Label MAceiteParte;
+        private System.Windows.Forms.ComboBox MPerdFluidosEstado;
+        private System.Windows.Forms.TextBox MPerdFluidosObser;
+        private System.Windows.Forms.Label MPerdFluidosParte;
+        private System.Windows.Forms.ComboBox MRadiadorEstado;
+        private System.Windows.Forms.TextBox MRadiadorObser;
+        private System.Windows.Forms.Label MRadiadorParte;
+        private System.Windows.Forms.ComboBox MArranqueEstado;
+        private System.Windows.Forms.TextBox MArranqueObser;
+        private System.Windows.Forms.Label MArranqueParte;
         private System.Windows.Forms.ComboBox MAlternadorEstado;
         private System.Windows.Forms.TextBox MAlternadorObser;
         private System.Windows.Forms.Label MAlternadorParte;
@@ -1283,15 +1267,13 @@
         private System.Windows.Forms.ComboBox MHidraulicoEstado;
         private System.Windows.Forms.TextBox MHidraulicoObser;
         private System.Windows.Forms.Label MHidraulicoParte;
-        private System.Windows.Forms.ComboBox MPerdFluidosEstado;
-        private System.Windows.Forms.TextBox MPerdFluidosObser;
-        private System.Windows.Forms.Label MPerdFluidosParte;
-        private System.Windows.Forms.ComboBox MRadiadorEstado;
-        private System.Windows.Forms.TextBox MRadiadorObser;
-        private System.Windows.Forms.Label MRadiadorParte;
-        private System.Windows.Forms.ComboBox MArranqueEstado;
-        private System.Windows.Forms.TextBox MArranqueObser;
-        private System.Windows.Forms.Label MArranqueParte;
+        private System.Windows.Forms.ComboBox MAceiteEstado;
+        private System.Windows.Forms.TextBox MAceiteObser;
+        private System.Windows.Forms.Label MAceiteParte;
+        private System.Windows.Forms.TabPage tabTrenDelantero;
+        private System.Windows.Forms.ComboBox TDEstNeumaEstado;
+        private System.Windows.Forms.TextBox TDEstNeumaObser;
+        private System.Windows.Forms.Label TDEstNeumaParte;
         private System.Windows.Forms.ComboBox TDAmortEstado;
         private System.Windows.Forms.TextBox TDAmortObser;
         private System.Windows.Forms.Label TDAmortParte;
@@ -1307,24 +1289,7 @@
         private System.Windows.Forms.ComboBox TDExtDirEstado;
         private System.Windows.Forms.TextBox TDExtDirObser;
         private System.Windows.Forms.Label TDExtDirParte;
-        private System.Windows.Forms.ComboBox TDEstNeumaEstado;
-        private System.Windows.Forms.TextBox TDEstNeumaObser;
-        private System.Windows.Forms.Label TDEstNeumaParte;
-        private System.Windows.Forms.ComboBox TTEstNeumaticoEstado;
-        private System.Windows.Forms.TextBox TTEstNeumaticoObser;
-        private System.Windows.Forms.Label TTEstNeumaticoParte;
-        private System.Windows.Forms.ComboBox TTAmortiEstado;
-        private System.Windows.Forms.TextBox TTAmortiObser;
-        private System.Windows.Forms.Label TTAmortiParte;
-        private System.Windows.Forms.ComboBox TTElasticosEstado;
-        private System.Windows.Forms.TextBox TTElasticosObser;
-        private System.Windows.Forms.Label TTElasticosParte;
-        private System.Windows.Forms.ComboBox TTCinFrenosEstado;
-        private System.Windows.Forms.TextBox TTCinFrenosObser;
-        private System.Windows.Forms.Label TTCinFrenosParte;
-        private System.Windows.Forms.ComboBox TTMazaRuleEstado;
-        private System.Windows.Forms.TextBox TTMazaRuleObser;
-        private System.Windows.Forms.Label TTMazaRuleParte;
+        private System.Windows.Forms.TabPage tabTransmision;
         private System.Windows.Forms.ComboBox TpalieresEstado;
         private System.Windows.Forms.TextBox TpalieresObser;
         private System.Windows.Forms.Label TpalieresParte;
@@ -1340,6 +1305,22 @@
         private System.Windows.Forms.ComboBox TCajaVeloEstado;
         private System.Windows.Forms.TextBox TCajaVeloObser;
         private System.Windows.Forms.Label TCajaVeloParte;
+        private System.Windows.Forms.TabPage tabTrenTrasero;
+        private System.Windows.Forms.ComboBox TTEstNeumaticoEstado;
+        private System.Windows.Forms.TextBox TTEstNeumaticoObser;
+        private System.Windows.Forms.Label TTEstNeumaticoParte;
+        private System.Windows.Forms.ComboBox TTAmortiEstado;
+        private System.Windows.Forms.TextBox TTAmortiObser;
+        private System.Windows.Forms.Label TTAmortiParte;
+        private System.Windows.Forms.ComboBox TTElasticosEstado;
+        private System.Windows.Forms.TextBox TTElasticosObser;
+        private System.Windows.Forms.Label TTElasticosParte;
+        private System.Windows.Forms.ComboBox TTCinFrenosEstado;
+        private System.Windows.Forms.TextBox TTCinFrenosObser;
+        private System.Windows.Forms.Label TTCinFrenosParte;
+        private System.Windows.Forms.ComboBox TTMazaRuleEstado;
+        private System.Windows.Forms.TextBox TTMazaRuleObser;
+        private System.Windows.Forms.Label TTMazaRuleParte;
         private System.Windows.Forms.TabPage EngraseYLuces;
         private System.Windows.Forms.ComboBox ELctrolLucesEstado;
         private System.Windows.Forms.TextBox ELctrolLucesObser;
@@ -1347,13 +1328,20 @@
         private System.Windows.Forms.ComboBox ELEngraseGralEstado;
         private System.Windows.Forms.TextBox ELEngraseGralObser;
         private System.Windows.Forms.Label ELEngraseGralParte;
+        private System.Windows.Forms.DateTimePicker dTPfechaTarea;
+        private System.Windows.Forms.TextBox tbInterno;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cbService;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbMecanicos;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbMonto;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.CheckBox cbService;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

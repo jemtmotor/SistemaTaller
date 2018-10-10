@@ -14,7 +14,12 @@ namespace SistemaTaller.DatosDao
             var context = new TallerContext();
             return context.Mecanicos.ToList();
         }
+        public Mecanico GetMecanico(int MecanicoId)
+        {
+            var context = new TallerContext();
+            return context.Mecanicos.Find(MecanicoId);
 
+        }
         public void InsertMecanico(Mecanico mecanico)
         {
             var context = new TallerContext();

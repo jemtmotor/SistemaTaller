@@ -169,7 +169,7 @@ namespace SistemaTaller
                         where (tablaTareaPendiente.FechaRecordatorio == FechaDeHoy)
                         select new
                         {
-                            ID = tablaTareaPendiente.Id,
+                            ID = tablaTareaPendiente.TareaPendienteId,
                             Tipo = tablaTareaPendiente.Tipo,
                             Service = tablaTareaPendiente.Service,
                             Interno = tablaTareaPendiente.Interno.Interno,
@@ -188,7 +188,7 @@ namespace SistemaTaller
                            where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy)
                            select new
                            {
-                               ID = tablaTareaPendiente.Id,
+                               ID = tablaTareaPendiente.TareaPendienteId,
                                Tipo = tablaTareaPendiente.Tipo,
                                Service = tablaTareaPendiente.Service,
                                Interno = tablaTareaPendiente.Interno.Interno,
@@ -210,7 +210,7 @@ namespace SistemaTaller
                                  where ((tablaTareaPendiente.FechaRecordatorio >= fechaCom1) && (tablaTareaPendiente.FechaRecordatorio <= fechaCom2))
                                  select new
                                  {
-                                     ID = tablaTareaPendiente.Id,
+                                     ID = tablaTareaPendiente.TareaPendienteId,
                                      Tipo = tablaTareaPendiente.Tipo,
                                      Service = tablaTareaPendiente.Service,
                                      Interno = tablaTareaPendiente.Interno.Interno,

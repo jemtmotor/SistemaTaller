@@ -20,5 +20,13 @@ namespace SistemaTaller.DatosDao
             context.Vehiculos.Add(tarea);
             context.SaveChanges();
         }
+
+        public Vehiculo GetVehiculo(int vehiculoId)
+        {
+            var context = new TallerContext();
+            return context.Vehiculos.Find(vehiculoId);
+
+        }
+
     }
 }

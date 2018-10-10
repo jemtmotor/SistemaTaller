@@ -95,7 +95,7 @@ namespace SistemaTaller
                                 // where tablaTareaPendiente.Mecanico.Id == tablaMecanico.Id
                             select new
                             {
-                                ID = tablaTareaPendiente.Id,
+                                ID = tablaTareaPendiente.TareaPendienteId,
                                 Fecha = tablaTareaPendiente.FechaTarea,                               
                                 Service = tablaTareaPendiente.Service,
                                 Tipo = tablaTareaPendiente.Tipo,
@@ -119,7 +119,7 @@ namespace SistemaTaller
                 
 
                 var datos = from tablaTarePendiente in contexto.TareaPendientes
-                                where (tablaTarePendiente.Id.ToString().Contains(txtID)) &&
+                                where (tablaTarePendiente.TareaPendienteId.ToString().Contains(txtID)) &&
                                 (tablaTarePendiente.Tipo.Contains(tipo))&&                            
                                 (tablaTarePendiente.Interno.Sucursal.Contains(sucursal))&&
                                 (tablaTarePendiente.Interno.Patente.ToUpper().Contains(dominio))&&
@@ -127,7 +127,7 @@ namespace SistemaTaller
                                 (tablaTarePendiente.FechaTarea >= fechaInicio && tablaTarePendiente.FechaTarea <= fechaFin)
                                 select new
                                 {
-                                    ID = tablaTarePendiente.Id,
+                                    ID = tablaTarePendiente.TareaPendienteId,
                                     Fecha = tablaTarePendiente.FechaTarea,                                    
                                     Service = tablaTarePendiente.Service,
                                     Tipo = tablaTarePendiente.Tipo,
@@ -156,7 +156,7 @@ namespace SistemaTaller
             var datos = from tablaTareaPendiente in contexto.TareaPendientes
                         select new
                         {
-                            ID = tablaTareaPendiente.Id,
+                            ID = tablaTareaPendiente.TareaPendienteId,
                             Fecha = tablaTareaPendiente.FechaTarea,
                             Monto = tablaTareaPendiente.Monto,
                             Service = tablaTareaPendiente.Service,

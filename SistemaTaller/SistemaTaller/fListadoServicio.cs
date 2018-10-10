@@ -13,6 +13,8 @@ namespace SistemaTaller
 {
     public partial class fListadoServicio : Form
     {
+        public int valor = -1;
+        public string tipoPasar = "";
         public Boolean filtro;
         int id;
         string sucursal;
@@ -72,7 +74,7 @@ namespace SistemaTaller
                                 // where tablaTareaPendiente.Mecanico.Id == tablaMecanico.Id
                             select new
                             {
-                                ID = tablaTareaPendiente.Id,
+                                ID = tablaTareaPendiente.TareaPendienteId,
                                 Tipo = tablaTareaPendiente.Tipo,
                                 Service = tablaTareaPendiente.Service,
                                 InternoVehiculo = tablaTareaPendiente.Interno.Interno,
@@ -98,18 +100,18 @@ namespace SistemaTaller
 
 
                 var datos = from tablaTareaPendiente in contexto.TareaPendientes
-                            where (tablaTareaPendiente.Id.ToString().Contains(txtID)) &&
+                            where (tablaTareaPendiente.TareaPendienteId.ToString().Contains(txtID)) &&
                             (tablaTareaPendiente.Tipo.Contains(tipo)) &&
                             (tablaTareaPendiente.Interno.Sucursal.Contains(sucursal)) &&
                             (tablaTareaPendiente.Interno.Patente.ToUpper().Contains(dominio)) &&
                             (tablaTareaPendiente.Interno.Interno.Contains(interno)) &&
-                            (tablaTareaPendiente.FechaTarea >= fechaInicio && tablaTareaPendiente.FechaTarea <= fechaFin)&&
+                            (tablaTareaPendiente.FechaTarea >= fechaInicio.Date && tablaTareaPendiente.FechaTarea <= fechaFin.Date)&&
                             (tablaTareaPendiente.Mecanico.Nombre.ToUpper().Contains(nombre))&&
                             (tablaTareaPendiente.Mecanico.Apellido.ToUpper().Contains(apellido))&&
                             ((tablaTareaPendiente.Monto >= montoInicio)&&(tablaTareaPendiente.Monto <= montoFin))
                             select new
                             {
-                                ID = tablaTareaPendiente.Id,
+                                ID = tablaTareaPendiente.TareaPendienteId,
                                 Tipo = tablaTareaPendiente.Tipo,
                                 Service = tablaTareaPendiente.Service,
                                 InternoVehiculo = tablaTareaPendiente.Interno.Interno,
@@ -128,6 +130,7 @@ namespace SistemaTaller
 
         }
 
+
         private void button4_Click(object sender, EventArgs e)
         {
             var contexto = new TallerContext();
@@ -137,7 +140,7 @@ namespace SistemaTaller
                             // where tablaTareaPendiente.Mecanico.Id == tablaMecanico.Id
                         select new
                         {
-                            ID = tablaTareaPendiente.Id,
+                            ID = tablaTareaPendiente.TareaPendienteId,
                             Tipo = tablaTareaPendiente.Tipo,
                             Service = tablaTareaPendiente.Service,
                             InternoVehiculo = tablaTareaPendiente.Interno.Interno,
@@ -153,6 +156,58 @@ namespace SistemaTaller
 
             this.gridSerReal.DataSource = datos.ToList();
             this.gridSerReal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if(valor > 0 && tipoPasar =="Chequeo")
+            { 
+                fModificarChequeo form = new fModificarChequeo(valor);
+                form.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("No se Selecciono un Chequeo", "Selecione un Chequeo Valido", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        private void gridSerReal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // var elemento = gridSerReal.SelectedRows;
+            
+        }
+
+        private void gridSerReal_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            /*try
+            {
+                 valor = (int)gridSerReal.CurrentRow.Cells["ID"].Value;
+                 tipoPasar = (string)gridSerReal.CurrentRow.Cells["Tipo"].Value;
+
+            }
+            catch (Exception error)
+            {
+               //Aun no se selecciono ninguna fila.
+                valor = -1;
+                tipoPasar = "";
+            }*/
+        }
+
+        private void gridSerReal_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                valor = (int)gridSerReal.CurrentRow.Cells["ID"].Value;
+                tipoPasar = (string)gridSerReal.CurrentRow.Cells["Tipo"].Value;
+
+            }
+            catch (Exception error)
+            {
+                //Aun no se selecciono ninguna fila.
+                valor = -1;
+                tipoPasar = "";
+            }
         }
     }
 }

@@ -29,7 +29,13 @@ namespace SistemaTaller.DatosDao
             return tp;
         }
 
-       
+        public TareaPendiente GetPendiente(int TareaPendienteId)
+        {
+            var context = new TallerContext();
+            return context.TareaPendientes.Find(TareaPendienteId);
+            
+        }
+
 
         public void Update(TareaPendiente item)
         {

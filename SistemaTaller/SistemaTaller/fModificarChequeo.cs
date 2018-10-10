@@ -13,33 +13,32 @@ using SistemaTaller.Modelos.Interfaz;
 
 namespace SistemaTaller
 {
-    public partial class fCargarCheck : Form
+    public partial class fModificarChequeo : Form
     {
+        public int TareaPendienteID;
         public ICollection<FilaDiagnosticoChequeo> FilaDiagnosticos { get; set; }
         public ICollection<Vehiculo> vehiculos { get; set; }
         private ICollection<Mecanico> Mecanicos { get; set; }
+        public List<Diagnostico> Diagnosticos { get; set; }
+        public List<Diagnostico> diagAmod { get; set; }
 
-        public fCargarCheck()
+        public fModificarChequeo()
         {
             InitializeComponent();
+            
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public fModificarChequeo(int valor)
         {
-
+            InitializeComponent();
+            this.TareaPendienteID = valor;
         }
 
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fCargarCheck_Load(object sender, EventArgs e)
+        private void fModificarChequeo_Load(object sender, EventArgs e)
         {
             FilaDiagnosticos = new List<FilaDiagnosticoChequeo>();
             //Sector Motor
-            FilaDiagnosticos.Add(MapFilaDiagnosticos(MAceiteEstado,MAceiteParte,MAceiteObser,tabMotor.Text));
-            FilaDiagnosticos.Add(MapFilaDiagnosticos(MAlternadorEstado,MAlternadorParte,MAlternadorObser,tabMotor.Text));
+            FilaDiagnosticos.Add(MapFilaDiagnosticos(MAceiteEstado, MAceiteParte, MAceiteObser, tabMotor.Text));
+            FilaDiagnosticos.Add(MapFilaDiagnosticos(MAlternadorEstado, MAlternadorParte, MAlternadorObser, tabMotor.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(MArranqueEstado, MArranqueParte, MArranqueObser, tabMotor.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(MCorreasEstado, MCorreasParte, MCorreasObser, tabMotor.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(MRadiadorEstado, MRadiadorParte, MRadiadorObser, tabMotor.Text));
@@ -47,14 +46,14 @@ namespace SistemaTaller
             FilaDiagnosticos.Add(MapFilaDiagnosticos(MManguerasEstado, MMangueraParte, MMangueraObser, tabMotor.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(MPerdFluidosEstado, MPerdFluidosParte, MPerdFluidosObser, tabMotor.Text));
             //Sector Tren Delantero
-            FilaDiagnosticos.Add(MapFilaDiagnosticos(TDAmortEstado,TDAmortParte,TDAmortObser,tabTrenDelantero.Text));
+            FilaDiagnosticos.Add(MapFilaDiagnosticos(TDAmortEstado, TDAmortParte, TDAmortObser, tabTrenDelantero.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TDCinFrenosEstado, TDCinFrenosParte, TDCinFrenosObser, tabTrenDelantero.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TDElasticosEstado, TDElasticosParte, TDElasticosObser, tabTrenDelantero.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TDEstNeumaEstado, TDEstNeumaParte, TDEstNeumaObser, tabTrenDelantero.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TDExtDirEstado, TDExtDirParte, TDExtDirObser, tabTrenDelantero.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TDMazYRuleEstado, TDMazYRuleParte, TDMazYRuleObser, tabTrenDelantero.Text));
             //Sector Transmision
-            FilaDiagnosticos.Add(MapFilaDiagnosticos(TCajaVeloEstado,TCajaVeloParte,TCajaVeloObser,tabTransmision.Text));
+            FilaDiagnosticos.Add(MapFilaDiagnosticos(TCajaVeloEstado, TCajaVeloParte, TCajaVeloObser, tabTransmision.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TCardanYCrucEstado, TCardanYCrucParte, TCardanYCrucObser, tabTransmision.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TEmbragueEstado, TEmbragueParte, TEmbragueObser, tabTransmision.Text));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(TdiferencialEstado, TdiferencialParte, TdiferencialObser, tabTransmision.Text));
@@ -68,7 +67,7 @@ namespace SistemaTaller
             //Sector Engrase y Luces
             FilaDiagnosticos.Add(MapFilaDiagnosticos(ELEngraseGralEstado, ELEngraseGralParte, ELEngraseGralObser, "Engrase General"));
             FilaDiagnosticos.Add(MapFilaDiagnosticos(ELctrolLucesEstado, ELctrolLucesParte, ELctrolLucesObser, "Control de Luces"));
-            //Cargar Mecanicos en el ComboBox de Mecanicos
+            //Mecanicos Opcion
             Mecanicos = new List<Mecanico>();
             Mecanicos = new MecanicosDao().GetMecanicos();
             /*foreach (var mecanico in Mecanicos)
@@ -84,103 +83,139 @@ namespace SistemaTaller
             //Obtengo Vehiculos.
             cbMecanicos.DataSource = Mecanicos;
             cbMecanicos.DisplayMember = "Nombre";
-
+            //Obtener Vehiculos.
             vehiculos = new List<Vehiculo>();
             vehiculos = new VehiculosDao().GetMecanicos();
-            int x = 12;
+            //Obtengo los Diagnosticos de la Tarea Pendiente y los cargo en la ventana de Modificar Diagnosticos.
+            DiagnosticoDao diagnosticoDao = new DiagnosticoDao();
+            diagAmod = diagnosticoDao.GetDiagnosticosByTareaPendienteID(TareaPendienteID);
+            CargarDiagnosticos(diagAmod);
+            //Obtengo el Chequeo con el ID seleccionado.
+            TareaPendienteDao tpDao = new TareaPendienteDao();
+            TareaPendiente tpAMod = tpDao.GetPendiente(TareaPendienteID);
+            //A partir de la tarea obtengo el mecanico a mostrar.
+            Mecanico mecAmod = new Mecanico();
+            foreach (var mecanico in Mecanicos)
+            {
+                if (mecanico.MecanicoId == tpAMod.MecanicoId)
+                {
+                    mecAmod = mecanico;
+                }
+            }
+            //A partir de la tarea obtengo el interno a mostrar.
+            Vehiculo vecAMod = new Vehiculo();
+            VehiculosDao vehiculoDao = new VehiculosDao();
+            vecAMod=vehiculoDao.GetVehiculo(tpAMod.VehiculoId);
+            //Cargo los datos del tarea Pendiente en los campos a Modificar
+            dTPfechaTarea.Value = tpAMod.FechaRealizado;
+            cbService.Checked = tpAMod.Service;
+            tbMonto.Text = $"{tpAMod.Monto}";
+            cbMecanicos.SelectedItem = mecAmod;
+            tbInterno.Text = vecAMod.Interno;
+            int x = 1;
         }
 
-        private void label14_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            Diagnosticos = new List<Diagnostico>();
+            foreach (var fd in FilaDiagnosticos)
+            {
+                if (fd.observacion.Enabled)
+                {
+                    var diagnostico = new Diagnostico
+                    {
+                        Sector = fd.Sector,
+                        Parte = fd.Parte.Text,
+                        Estado = false,
+                        Observacion = fd.observacion.Text
+                    };
+                    Diagnosticos.Add(diagnostico);
+                }
+            }
 
-        }
+            
 
-        private void label12_Click(object sender, EventArgs e)
-        {
+            object MecanicoSeleccionado = cbMecanicos.SelectedItem;
+            Mecanico mec = MecanicoSeleccionado as Mecanico;
+            /*Mecanico mecanicoIngreso = new Mecanico();
+            foreach (var mecanico in Mecanicos)
+            {
+                 if (mecanico.Id == mec.Id)
+                 {
+                     mecanicoIngreso = mecanico;
+            }
+             }
+             */
 
-        }
 
-        private void label35_Click(object sender, EventArgs e)
-        {
+            //Int32.TryParse(tbInterno.Text, out var interno);
+            Vehiculo vec = new Vehiculo();
+            foreach (var vehiculo in vehiculos)
+            {
+                if (tbInterno.Text == vehiculo.Interno)
+                {
+                    vec = vehiculo;
+                }
+            }
+            //Int32.TryParse(tbMonto.Text, out var monto);
+            decimal monto = Convert.ToDecimal(tbMonto.Text);
+            //Seteo la tarea pendiente con los nuevos datos del formulario
+            TareaPendiente tareaPendiente = new TareaPendiente
+            {
+                TareaPendienteId = TareaPendienteID,
+                Diagnosticos = Diagnosticos,
+                Estado = !Diagnosticos.Any(),
+                FechaRealizado = dTPfechaTarea.Value,
+                FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),
+                MecanicoId = mec.MecanicoId,
+                VehiculoId = vec.VehiculoId,
+                Monto = (Decimal)monto,
+                Service = cbService.Checked,
+                Tipo = "Chequeo"
+            };
+            //Actualizo la tarea Pendiente en la base de datos.
+            var TareaDao = new TareaPendienteDao();
+            TareaDao.Update(tareaPendiente);
 
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
+            //Actualizo los diagnoticos realacionados a ese TareaPendiente.
+            //Primero borro todos los diagnoticos viejos.
+            DiagnosticoDao diagnosticoDao = new DiagnosticoDao();
+            foreach (Diagnostico diagnosticoBorrar in diagAmod)
+            {
+                diagnosticoDao.BorrarDiagnosticoByTareaPendienteID(TareaPendienteID);
+            }
+            
+            
+            //ahora cargo los nuevos diagnosticos.
+            
+            
+            foreach (var diag in Diagnosticos)
+            {
+               diag.TareaPendienteId = TareaPendienteID;
+               diagnosticoDao.InsertDiagnostico(diag);
+            }
+            MessageBox.Show("Se modifico el mantenimiento", "Modificacion de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            fListadoServicio form = new fListadoServicio();
+            form.Show();
             this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
             
-        }
 
-        private void label12_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(ELEngraseGralEstado, ELEngraseGralObser);
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(ELctrolLucesEstado, ELctrolLucesObser);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            
-            
         }
 
         private void MAceiteEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HabilitacionObservacion(MAceiteEstado,MAceiteObser);
+            HabilitacionObservacion(MAceiteEstado, MAceiteObser);
         }
-
+        public FilaDiagnosticoChequeo MapFilaDiagnosticos(ComboBox estado, Label Parte, TextBox observacion1, string Sector1)
+        {
+            return new FilaDiagnosticoChequeo
+            {
+                Sector = Sector1,
+                Estado = estado,
+                Parte = Parte,
+                observacion = observacion1
+            };
+        }
         public void HabilitacionObservacion(ComboBox cmBox, TextBox txBox)
         {
             if (cmBox.Text == "MALO")
@@ -199,87 +234,9 @@ namespace SistemaTaller
             HabilitacionObservacion(MHidraulicoEstado, MHidraulicoObser);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            Diagnosticos = new List<Diagnostico>();
-            foreach (var fd in FilaDiagnosticos)
-            {
-                if (fd.observacion.Enabled)
-                {
-                    var diagnostico = new Diagnostico
-                    {
-                        Sector = fd.Sector,
-                        Parte = fd.Parte.Text,
-                        Estado = false,
-                        Observacion = fd.observacion.Text
-                    };
-                    Diagnosticos.Add(diagnostico);
-                }
-            }
-
-           object MecanicoSeleccionado = cbMecanicos.SelectedItem;
-           Mecanico mec = MecanicoSeleccionado as Mecanico;
-           /*Mecanico mecanicoIngreso = new Mecanico();
-           foreach (var mecanico in Mecanicos)
-           {
-                if (mecanico.Id == mec.Id)
-                {
-                    mecanicoIngreso = mecanico;
-           }
-            }
-            */
-
-
-            //Int32.TryParse(tbInterno.Text, out var interno);
-            Vehiculo vec = new Vehiculo();
-            foreach (var vehiculo in vehiculos)
-            {
-                if (tbInterno.Text == vehiculo.Interno)
-                {
-                    vec = vehiculo;
-                }
-            }
-            //Int32.TryParse(tbMonto.Text, out var monto);
-            decimal monto = Convert.ToDecimal(tbMonto.Text);
-            TareaPendiente tareaPendiente = new TareaPendiente
-            {
-                Diagnosticos = Diagnosticos,
-                Estado = !Diagnosticos.Any(),
-                FechaRealizado = dTPfechaTarea.Value,
-                FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),
-                MecanicoId = mec.MecanicoId,
-                VehiculoId = vec.VehiculoId,
-                Monto =(Decimal) monto,
-                Service = cbService.Checked,
-                Tipo = "Chequeo"
-            };
-            var TareaDao = new TareaPendienteDao();
-                TareaDao.InsertTareaPendiente(tareaPendiente);
-            TareaPendiente ultima = TareaDao.GetUltimoPendiente();
-            DiagnosticoDao diagDao = new DiagnosticoDao();
-            foreach (var diag in Diagnosticos)
-            {
-                diag.TareaPendienteId = ultima.TareaPendienteId;
-                diagDao.InsertDiagnostico(diag);
-            }
-
-            MessageBox.Show("Se registro el mantenimiento", "Registro de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            this.Close();
-        }
-
-        public FilaDiagnosticoChequeo MapFilaDiagnosticos(ComboBox estado, Label Parte, TextBox observacion1, string Sector1)
-        {
-            return new FilaDiagnosticoChequeo
-            {
-                Sector = Sector1,Estado = estado,Parte = Parte,observacion = observacion1
-            };
-        }
-        public ICollection<Diagnostico> Diagnosticos { get; set; }
-
         private void MCorreasEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-             HabilitacionObservacion(MCorreasEstado, MCorreasObser);
+            HabilitacionObservacion(MCorreasEstado, MCorreasObser);
         }
 
         private void MManguerasEstado_SelectedIndexChanged(object sender, EventArgs e)
@@ -306,31 +263,6 @@ namespace SistemaTaller
         {
             HabilitacionObservacion(MPerdFluidosEstado, MPerdFluidosObser);
         }
-
-        private void tbInterno_Leave(object sender, EventArgs e)
-        {
-            Int32.TryParse(tbInterno.Text, out var interno);
-            bool valido = false;
-            foreach (var vehiculo in vehiculos)
-            {
-                if (tbInterno.Text == vehiculo.Interno)
-                {
-                    valido = true;
-                    break;
-                }
-            }
-
-            if (!valido)
-            {
-                MessageBox.Show("El Vehiculo Ingresado no se encuentra en el Sistema", "Interno No Existe", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
-        }
-
-        private void cbMecanicos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //Segunda Pestaña
         private void TDExtDirEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -422,79 +354,27 @@ namespace SistemaTaller
             HabilitacionObservacion(ELctrolLucesEstado, ELctrolLucesObser);
         }
 
-        private void TDMazYRuleEstado_SelectedIndexChanged_1(object sender, EventArgs e)
+        //Cargar Diagnosticos.
+        public void CargarDiagnosticos(List<Diagnostico> DiagnosticosLista)
         {
-            HabilitacionObservacion(TDMazYRuleEstado, TDMazYRuleObser);
+            foreach (Diagnostico diag in DiagnosticosLista)
+            {
+                foreach (var filadiag in FilaDiagnosticos)
+                {
+                    if (filadiag.Sector == diag.Sector && filadiag.Parte.Text == diag.Parte)
+                    {
+                        filadiag.Estado.Text = !diag.Estado ? "MALO" : "BUENO";
+                        filadiag.observacion.Text = diag.Observacion;
+                    }
+                }
+            }
         }
 
-        private void TDElasticosEstado_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            HabilitacionObservacion(TDElasticosEstado, TDElasticosObser);
-        }
-
-        private void TDCinFrenosEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TDCinFrenosEstado, TDCinFrenosObser);
-        }
-
-        private void TDAmortEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TDAmortEstado, TDAmortObser);
-        }
-
-        private void TDEstNeumaEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TDEstNeumaEstado, TDEstNeumaObser);
-        }
-
-        private void TCajaVeloEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TCajaVeloEstado, TCajaVeloObser);
-        }
-
-        private void TCardanYCrucEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TCardanYCrucEstado, TCardanYCrucObser);
-        }
-
-        private void TEmbragueEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TEmbragueEstado, TEmbragueObser);
-        }
-
-        private void TdiferencialEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TdiferencialEstado, TdiferencialObser);
-        }
-
-        private void TpalieresEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TpalieresEstado, TpalieresObser);
-        }
-
-        private void TTMazaRuleEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TTMazaRuleEstado, TTMazaRuleObser);
-        }
-
-        private void TTCinFrenosEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TTCinFrenosEstado, TTCinFrenosObser);
-        }
-
-        private void TTElasticosEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TTElasticosEstado, TDElasticosObser);
-        }
-
-        private void TTAmortiEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TTAmortiEstado, TTAmortiObser);
-        }
-
-        private void TTEstNeumaticoEstado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            HabilitacionObservacion(TTEstNeumaticoEstado, TTEstNeumaticoObser);
+            fListadoServicio form = new fListadoServicio();
+            form.Show();
+            this.Close();
         }
     }
 }
