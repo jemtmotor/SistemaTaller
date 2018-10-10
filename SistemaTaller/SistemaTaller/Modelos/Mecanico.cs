@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,8 @@ namespace SistemaTaller.Modelos
 {
     public class Mecanico
     {
-        public int Id { get; set; }
+        [Key]
+        public int MecanicoId { get; set; }
         public string Legajo { get; set; }
         public string Apellido { get; set; }
         public string Nombre { get; set; }
