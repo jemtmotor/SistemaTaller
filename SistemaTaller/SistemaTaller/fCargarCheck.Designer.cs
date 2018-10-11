@@ -140,6 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label1.Location = new System.Drawing.Point(348, 23);
@@ -496,6 +497,7 @@
             // 
             // tabTrenDelantero
             // 
+            this.tabTrenDelantero.BackColor = System.Drawing.Color.Gray;
             this.tabTrenDelantero.Controls.Add(this.TDEstNeumaEstado);
             this.tabTrenDelantero.Controls.Add(this.TDEstNeumaObser);
             this.tabTrenDelantero.Controls.Add(this.TDEstNeumaParte);
@@ -520,7 +522,6 @@
             this.tabTrenDelantero.Size = new System.Drawing.Size(735, 282);
             this.tabTrenDelantero.TabIndex = 1;
             this.tabTrenDelantero.Text = "Tren Delantero";
-            this.tabTrenDelantero.UseVisualStyleBackColor = true;
             this.tabTrenDelantero.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // TDEstNeumaEstado
@@ -530,7 +531,7 @@
             this.TDEstNeumaEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TDEstNeumaEstado.Location = new System.Drawing.Point(148, 188);
+            this.TDEstNeumaEstado.Location = new System.Drawing.Point(188, 188);
             this.TDEstNeumaEstado.Name = "TDEstNeumaEstado";
             this.TDEstNeumaEstado.Size = new System.Drawing.Size(162, 21);
             this.TDEstNeumaEstado.TabIndex = 46;
@@ -539,7 +540,7 @@
             // TDEstNeumaObser
             // 
             this.TDEstNeumaObser.Enabled = false;
-            this.TDEstNeumaObser.Location = new System.Drawing.Point(316, 189);
+            this.TDEstNeumaObser.Location = new System.Drawing.Point(356, 188);
             this.TDEstNeumaObser.Name = "TDEstNeumaObser";
             this.TDEstNeumaObser.Size = new System.Drawing.Size(344, 20);
             this.TDEstNeumaObser.TabIndex = 45;
@@ -560,7 +561,7 @@
             this.TDAmortEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TDAmortEstado.Location = new System.Drawing.Point(148, 161);
+            this.TDAmortEstado.Location = new System.Drawing.Point(188, 161);
             this.TDAmortEstado.Name = "TDAmortEstado";
             this.TDAmortEstado.Size = new System.Drawing.Size(162, 21);
             this.TDAmortEstado.TabIndex = 43;
@@ -569,7 +570,7 @@
             // TDAmortObser
             // 
             this.TDAmortObser.Enabled = false;
-            this.TDAmortObser.Location = new System.Drawing.Point(316, 162);
+            this.TDAmortObser.Location = new System.Drawing.Point(356, 161);
             this.TDAmortObser.Name = "TDAmortObser";
             this.TDAmortObser.Size = new System.Drawing.Size(344, 20);
             this.TDAmortObser.TabIndex = 42;
@@ -590,7 +591,7 @@
             this.TDCinFrenosEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TDCinFrenosEstado.Location = new System.Drawing.Point(148, 135);
+            this.TDCinFrenosEstado.Location = new System.Drawing.Point(188, 135);
             this.TDCinFrenosEstado.Name = "TDCinFrenosEstado";
             this.TDCinFrenosEstado.Size = new System.Drawing.Size(162, 21);
             this.TDCinFrenosEstado.TabIndex = 40;
@@ -599,7 +600,7 @@
             // TDCinFrenosObser
             // 
             this.TDCinFrenosObser.Enabled = false;
-            this.TDCinFrenosObser.Location = new System.Drawing.Point(316, 136);
+            this.TDCinFrenosObser.Location = new System.Drawing.Point(356, 135);
             this.TDCinFrenosObser.Name = "TDCinFrenosObser";
             this.TDCinFrenosObser.Size = new System.Drawing.Size(344, 20);
             this.TDCinFrenosObser.TabIndex = 39;
@@ -620,7 +621,7 @@
             this.TDElasticosEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TDElasticosEstado.Location = new System.Drawing.Point(148, 108);
+            this.TDElasticosEstado.Location = new System.Drawing.Point(188, 108);
             this.TDElasticosEstado.Name = "TDElasticosEstado";
             this.TDElasticosEstado.Size = new System.Drawing.Size(162, 21);
             this.TDElasticosEstado.TabIndex = 37;
@@ -629,7 +630,7 @@
             // TDElasticosObser
             // 
             this.TDElasticosObser.Enabled = false;
-            this.TDElasticosObser.Location = new System.Drawing.Point(316, 109);
+            this.TDElasticosObser.Location = new System.Drawing.Point(356, 108);
             this.TDElasticosObser.Name = "TDElasticosObser";
             this.TDElasticosObser.Size = new System.Drawing.Size(344, 20);
             this.TDElasticosObser.TabIndex = 36;
@@ -650,7 +651,7 @@
             this.TDMazYRuleEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TDMazYRuleEstado.Location = new System.Drawing.Point(148, 82);
+            this.TDMazYRuleEstado.Location = new System.Drawing.Point(188, 82);
             this.TDMazYRuleEstado.Name = "TDMazYRuleEstado";
             this.TDMazYRuleEstado.Size = new System.Drawing.Size(162, 21);
             this.TDMazYRuleEstado.TabIndex = 34;
@@ -659,7 +660,7 @@
             // TDMazYRuleObser
             // 
             this.TDMazYRuleObser.Enabled = false;
-            this.TDMazYRuleObser.Location = new System.Drawing.Point(316, 83);
+            this.TDMazYRuleObser.Location = new System.Drawing.Point(356, 82);
             this.TDMazYRuleObser.Name = "TDMazYRuleObser";
             this.TDMazYRuleObser.Size = new System.Drawing.Size(344, 20);
             this.TDMazYRuleObser.TabIndex = 33;
@@ -680,7 +681,7 @@
             this.TDExtDirEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TDExtDirEstado.Location = new System.Drawing.Point(148, 56);
+            this.TDExtDirEstado.Location = new System.Drawing.Point(188, 56);
             this.TDExtDirEstado.Name = "TDExtDirEstado";
             this.TDExtDirEstado.Size = new System.Drawing.Size(162, 21);
             this.TDExtDirEstado.TabIndex = 31;
@@ -689,7 +690,7 @@
             // TDExtDirObser
             // 
             this.TDExtDirObser.Enabled = false;
-            this.TDExtDirObser.Location = new System.Drawing.Point(316, 57);
+            this.TDExtDirObser.Location = new System.Drawing.Point(356, 56);
             this.TDExtDirObser.Name = "TDExtDirObser";
             this.TDExtDirObser.Size = new System.Drawing.Size(344, 20);
             this.TDExtDirObser.TabIndex = 30;
@@ -705,6 +706,7 @@
             // 
             // tabTransmision
             // 
+            this.tabTransmision.BackColor = System.Drawing.Color.Gray;
             this.tabTransmision.Controls.Add(this.TpalieresEstado);
             this.tabTransmision.Controls.Add(this.TpalieresObser);
             this.tabTransmision.Controls.Add(this.TpalieresParte);
@@ -726,7 +728,6 @@
             this.tabTransmision.Size = new System.Drawing.Size(735, 282);
             this.tabTransmision.TabIndex = 2;
             this.tabTransmision.Text = "Transmisión";
-            this.tabTransmision.UseVisualStyleBackColor = true;
             // 
             // TpalieresEstado
             // 
@@ -735,7 +736,7 @@
             this.TpalieresEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TpalieresEstado.Location = new System.Drawing.Point(145, 170);
+            this.TpalieresEstado.Location = new System.Drawing.Point(204, 170);
             this.TpalieresEstado.Name = "TpalieresEstado";
             this.TpalieresEstado.Size = new System.Drawing.Size(162, 21);
             this.TpalieresEstado.TabIndex = 61;
@@ -744,7 +745,7 @@
             // TpalieresObser
             // 
             this.TpalieresObser.Enabled = false;
-            this.TpalieresObser.Location = new System.Drawing.Point(313, 171);
+            this.TpalieresObser.Location = new System.Drawing.Point(372, 171);
             this.TpalieresObser.Name = "TpalieresObser";
             this.TpalieresObser.Size = new System.Drawing.Size(344, 20);
             this.TpalieresObser.TabIndex = 60;
@@ -765,7 +766,7 @@
             this.TdiferencialEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TdiferencialEstado.Location = new System.Drawing.Point(145, 144);
+            this.TdiferencialEstado.Location = new System.Drawing.Point(204, 144);
             this.TdiferencialEstado.Name = "TdiferencialEstado";
             this.TdiferencialEstado.Size = new System.Drawing.Size(162, 21);
             this.TdiferencialEstado.TabIndex = 58;
@@ -774,7 +775,7 @@
             // TdiferencialObser
             // 
             this.TdiferencialObser.Enabled = false;
-            this.TdiferencialObser.Location = new System.Drawing.Point(313, 145);
+            this.TdiferencialObser.Location = new System.Drawing.Point(372, 145);
             this.TdiferencialObser.Name = "TdiferencialObser";
             this.TdiferencialObser.Size = new System.Drawing.Size(344, 20);
             this.TdiferencialObser.TabIndex = 57;
@@ -795,7 +796,7 @@
             this.TEmbragueEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TEmbragueEstado.Location = new System.Drawing.Point(145, 117);
+            this.TEmbragueEstado.Location = new System.Drawing.Point(204, 117);
             this.TEmbragueEstado.Name = "TEmbragueEstado";
             this.TEmbragueEstado.Size = new System.Drawing.Size(162, 21);
             this.TEmbragueEstado.TabIndex = 55;
@@ -804,7 +805,7 @@
             // TEmbragueObser
             // 
             this.TEmbragueObser.Enabled = false;
-            this.TEmbragueObser.Location = new System.Drawing.Point(313, 118);
+            this.TEmbragueObser.Location = new System.Drawing.Point(372, 118);
             this.TEmbragueObser.Name = "TEmbragueObser";
             this.TEmbragueObser.Size = new System.Drawing.Size(344, 20);
             this.TEmbragueObser.TabIndex = 54;
@@ -825,7 +826,7 @@
             this.TCardanYCrucEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TCardanYCrucEstado.Location = new System.Drawing.Point(145, 91);
+            this.TCardanYCrucEstado.Location = new System.Drawing.Point(204, 91);
             this.TCardanYCrucEstado.Name = "TCardanYCrucEstado";
             this.TCardanYCrucEstado.Size = new System.Drawing.Size(162, 21);
             this.TCardanYCrucEstado.TabIndex = 52;
@@ -834,7 +835,7 @@
             // TCardanYCrucObser
             // 
             this.TCardanYCrucObser.Enabled = false;
-            this.TCardanYCrucObser.Location = new System.Drawing.Point(313, 92);
+            this.TCardanYCrucObser.Location = new System.Drawing.Point(372, 92);
             this.TCardanYCrucObser.Name = "TCardanYCrucObser";
             this.TCardanYCrucObser.Size = new System.Drawing.Size(344, 20);
             this.TCardanYCrucObser.TabIndex = 51;
@@ -855,7 +856,7 @@
             this.TCajaVeloEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TCajaVeloEstado.Location = new System.Drawing.Point(145, 65);
+            this.TCajaVeloEstado.Location = new System.Drawing.Point(204, 65);
             this.TCajaVeloEstado.Name = "TCajaVeloEstado";
             this.TCajaVeloEstado.Size = new System.Drawing.Size(162, 21);
             this.TCajaVeloEstado.TabIndex = 49;
@@ -864,7 +865,7 @@
             // TCajaVeloObser
             // 
             this.TCajaVeloObser.Enabled = false;
-            this.TCajaVeloObser.Location = new System.Drawing.Point(313, 66);
+            this.TCajaVeloObser.Location = new System.Drawing.Point(372, 66);
             this.TCajaVeloObser.Name = "TCajaVeloObser";
             this.TCajaVeloObser.Size = new System.Drawing.Size(344, 20);
             this.TCajaVeloObser.TabIndex = 48;
@@ -880,6 +881,7 @@
             // 
             // tabTrenTrasero
             // 
+            this.tabTrenTrasero.BackColor = System.Drawing.Color.Gray;
             this.tabTrenTrasero.Controls.Add(this.TTEstNeumaticoEstado);
             this.tabTrenTrasero.Controls.Add(this.TTEstNeumaticoObser);
             this.tabTrenTrasero.Controls.Add(this.TTEstNeumaticoParte);
@@ -901,7 +903,6 @@
             this.tabTrenTrasero.Size = new System.Drawing.Size(735, 282);
             this.tabTrenTrasero.TabIndex = 3;
             this.tabTrenTrasero.Text = "Tren Trasero";
-            this.tabTrenTrasero.UseVisualStyleBackColor = true;
             // 
             // TTEstNeumaticoEstado
             // 
@@ -910,7 +911,7 @@
             this.TTEstNeumaticoEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TTEstNeumaticoEstado.Location = new System.Drawing.Point(146, 185);
+            this.TTEstNeumaticoEstado.Location = new System.Drawing.Point(204, 185);
             this.TTEstNeumaticoEstado.Name = "TTEstNeumaticoEstado";
             this.TTEstNeumaticoEstado.Size = new System.Drawing.Size(162, 21);
             this.TTEstNeumaticoEstado.TabIndex = 58;
@@ -919,7 +920,7 @@
             // TTEstNeumaticoObser
             // 
             this.TTEstNeumaticoObser.Enabled = false;
-            this.TTEstNeumaticoObser.Location = new System.Drawing.Point(314, 186);
+            this.TTEstNeumaticoObser.Location = new System.Drawing.Point(372, 186);
             this.TTEstNeumaticoObser.Name = "TTEstNeumaticoObser";
             this.TTEstNeumaticoObser.Size = new System.Drawing.Size(344, 20);
             this.TTEstNeumaticoObser.TabIndex = 57;
@@ -940,7 +941,7 @@
             this.TTAmortiEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TTAmortiEstado.Location = new System.Drawing.Point(146, 159);
+            this.TTAmortiEstado.Location = new System.Drawing.Point(204, 159);
             this.TTAmortiEstado.Name = "TTAmortiEstado";
             this.TTAmortiEstado.Size = new System.Drawing.Size(162, 21);
             this.TTAmortiEstado.TabIndex = 55;
@@ -949,7 +950,7 @@
             // TTAmortiObser
             // 
             this.TTAmortiObser.Enabled = false;
-            this.TTAmortiObser.Location = new System.Drawing.Point(314, 160);
+            this.TTAmortiObser.Location = new System.Drawing.Point(372, 160);
             this.TTAmortiObser.Name = "TTAmortiObser";
             this.TTAmortiObser.Size = new System.Drawing.Size(344, 20);
             this.TTAmortiObser.TabIndex = 54;
@@ -970,7 +971,7 @@
             this.TTElasticosEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TTElasticosEstado.Location = new System.Drawing.Point(146, 132);
+            this.TTElasticosEstado.Location = new System.Drawing.Point(204, 132);
             this.TTElasticosEstado.Name = "TTElasticosEstado";
             this.TTElasticosEstado.Size = new System.Drawing.Size(162, 21);
             this.TTElasticosEstado.TabIndex = 52;
@@ -979,7 +980,7 @@
             // TTElasticosObser
             // 
             this.TTElasticosObser.Enabled = false;
-            this.TTElasticosObser.Location = new System.Drawing.Point(314, 133);
+            this.TTElasticosObser.Location = new System.Drawing.Point(372, 133);
             this.TTElasticosObser.Name = "TTElasticosObser";
             this.TTElasticosObser.Size = new System.Drawing.Size(344, 20);
             this.TTElasticosObser.TabIndex = 51;
@@ -1000,7 +1001,7 @@
             this.TTCinFrenosEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TTCinFrenosEstado.Location = new System.Drawing.Point(146, 106);
+            this.TTCinFrenosEstado.Location = new System.Drawing.Point(204, 106);
             this.TTCinFrenosEstado.Name = "TTCinFrenosEstado";
             this.TTCinFrenosEstado.Size = new System.Drawing.Size(162, 21);
             this.TTCinFrenosEstado.TabIndex = 49;
@@ -1009,7 +1010,7 @@
             // TTCinFrenosObser
             // 
             this.TTCinFrenosObser.Enabled = false;
-            this.TTCinFrenosObser.Location = new System.Drawing.Point(314, 107);
+            this.TTCinFrenosObser.Location = new System.Drawing.Point(372, 107);
             this.TTCinFrenosObser.Name = "TTCinFrenosObser";
             this.TTCinFrenosObser.Size = new System.Drawing.Size(344, 20);
             this.TTCinFrenosObser.TabIndex = 48;
@@ -1030,7 +1031,7 @@
             this.TTMazaRuleEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.TTMazaRuleEstado.Location = new System.Drawing.Point(146, 80);
+            this.TTMazaRuleEstado.Location = new System.Drawing.Point(204, 80);
             this.TTMazaRuleEstado.Name = "TTMazaRuleEstado";
             this.TTMazaRuleEstado.Size = new System.Drawing.Size(162, 21);
             this.TTMazaRuleEstado.TabIndex = 46;
@@ -1039,7 +1040,7 @@
             // TTMazaRuleObser
             // 
             this.TTMazaRuleObser.Enabled = false;
-            this.TTMazaRuleObser.Location = new System.Drawing.Point(314, 81);
+            this.TTMazaRuleObser.Location = new System.Drawing.Point(372, 81);
             this.TTMazaRuleObser.Name = "TTMazaRuleObser";
             this.TTMazaRuleObser.Size = new System.Drawing.Size(344, 20);
             this.TTMazaRuleObser.TabIndex = 45;
@@ -1055,6 +1056,7 @@
             // 
             // EngraseYLuces
             // 
+            this.EngraseYLuces.BackColor = System.Drawing.Color.Gray;
             this.EngraseYLuces.Controls.Add(this.ELctrolLucesEstado);
             this.EngraseYLuces.Controls.Add(this.ELctrolLucesObser);
             this.EngraseYLuces.Controls.Add(this.ELctrolLucesParte);
@@ -1067,7 +1069,6 @@
             this.EngraseYLuces.Size = new System.Drawing.Size(735, 282);
             this.EngraseYLuces.TabIndex = 4;
             this.EngraseYLuces.Text = "Engrase y Luces";
-            this.EngraseYLuces.UseVisualStyleBackColor = true;
             // 
             // ELctrolLucesEstado
             // 
@@ -1076,7 +1077,7 @@
             this.ELctrolLucesEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.ELctrolLucesEstado.Location = new System.Drawing.Point(145, 144);
+            this.ELctrolLucesEstado.Location = new System.Drawing.Point(204, 49);
             this.ELctrolLucesEstado.Name = "ELctrolLucesEstado";
             this.ELctrolLucesEstado.Size = new System.Drawing.Size(162, 21);
             this.ELctrolLucesEstado.TabIndex = 55;
@@ -1085,7 +1086,7 @@
             // ELctrolLucesObser
             // 
             this.ELctrolLucesObser.Enabled = false;
-            this.ELctrolLucesObser.Location = new System.Drawing.Point(313, 145);
+            this.ELctrolLucesObser.Location = new System.Drawing.Point(372, 50);
             this.ELctrolLucesObser.Name = "ELctrolLucesObser";
             this.ELctrolLucesObser.Size = new System.Drawing.Size(344, 20);
             this.ELctrolLucesObser.TabIndex = 54;
@@ -1094,7 +1095,7 @@
             // ELctrolLucesParte
             // 
             this.ELctrolLucesParte.AutoSize = true;
-            this.ELctrolLucesParte.Location = new System.Drawing.Point(14, 152);
+            this.ELctrolLucesParte.Location = new System.Drawing.Point(25, 53);
             this.ELctrolLucesParte.Name = "ELctrolLucesParte";
             this.ELctrolLucesParte.Size = new System.Drawing.Size(169, 13);
             this.ELctrolLucesParte.TabIndex = 53;
@@ -1108,7 +1109,7 @@
             this.ELEngraseGralEstado.Items.AddRange(new object[] {
             "BUENO",
             "MALO"});
-            this.ELEngraseGralEstado.Location = new System.Drawing.Point(145, 118);
+            this.ELEngraseGralEstado.Location = new System.Drawing.Point(204, 23);
             this.ELEngraseGralEstado.Name = "ELEngraseGralEstado";
             this.ELEngraseGralEstado.Size = new System.Drawing.Size(162, 21);
             this.ELEngraseGralEstado.TabIndex = 52;
@@ -1117,7 +1118,7 @@
             // ELEngraseGralObser
             // 
             this.ELEngraseGralObser.Enabled = false;
-            this.ELEngraseGralObser.Location = new System.Drawing.Point(313, 119);
+            this.ELEngraseGralObser.Location = new System.Drawing.Point(372, 24);
             this.ELEngraseGralObser.Name = "ELEngraseGralObser";
             this.ELEngraseGralObser.Size = new System.Drawing.Size(344, 20);
             this.ELEngraseGralObser.TabIndex = 51;
@@ -1126,7 +1127,7 @@
             // ELEngraseGralParte
             // 
             this.ELEngraseGralParte.AutoSize = true;
-            this.ELEngraseGralParte.Location = new System.Drawing.Point(14, 126);
+            this.ELEngraseGralParte.Location = new System.Drawing.Point(25, 27);
             this.ELEngraseGralParte.Name = "ELEngraseGralParte";
             this.ELEngraseGralParte.Size = new System.Drawing.Size(113, 13);
             this.ELEngraseGralParte.TabIndex = 50;

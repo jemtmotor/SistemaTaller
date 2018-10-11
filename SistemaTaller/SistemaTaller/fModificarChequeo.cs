@@ -22,6 +22,7 @@ namespace SistemaTaller
         public List<Diagnostico> Diagnosticos { get; set; }
         public List<Diagnostico> diagAmod { get; set; }
 
+        public bool fechaValida = true;
         public fModificarChequeo()
         {
             InitializeComponent();
@@ -117,27 +118,56 @@ namespace SistemaTaller
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Diagnosticos = new List<Diagnostico>();
-            foreach (var fd in FilaDiagnosticos)
+            Int32.TryParse(tbInterno.Text, out var interno);
+            bool valido = false;
+            foreach (var vehiculo in vehiculos)
             {
-                if (fd.observacion.Enabled)
+                if (tbInterno.Text == vehiculo.Interno)
                 {
-                    var diagnostico = new Diagnostico
-                    {
-                        Sector = fd.Sector,
-                        Parte = fd.Parte.Text,
-                        Estado = false,
-                        Observacion = fd.observacion.Text
-                    };
-                    Diagnosticos.Add(diagnostico);
+                    valido = true;
+                    break;
                 }
             }
 
+            if (!valido || fechaValida == false)
+            {
+                if (!valido)
+                {
+                    MessageBox.Show("El Vehiculo Ingresado no se encuentra en el Sistema", "Interno No Existe",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    tbInterno.Focus();
+                }
+
+                if (!fechaValida)
+                {
+                    MessageBox.Show("La fecha no puede superer la actual", "Fecha No Valida",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    dTPfechaTarea.Focus();
+                }
+            }
+            else
+            {
+                Diagnosticos = new List<Diagnostico>();
+                foreach (var fd in FilaDiagnosticos)
+                {
+                    if (fd.observacion.Enabled)
+                    {
+                        var diagnostico = new Diagnostico
+                        {
+                            Sector = fd.Sector,
+                            Parte = fd.Parte.Text,
+                            Estado = false,
+                            Observacion = fd.observacion.Text
+                        };
+                        Diagnosticos.Add(diagnostico);
+                    }
+                }
+
             
 
-            object MecanicoSeleccionado = cbMecanicos.SelectedItem;
-            Mecanico mec = MecanicoSeleccionado as Mecanico;
-            /*Mecanico mecanicoIngreso = new Mecanico();
+                object MecanicoSeleccionado = cbMecanicos.SelectedItem;
+                Mecanico mec = MecanicoSeleccionado as Mecanico;
+                /*Mecanico mecanicoIngreso = new Mecanico();
             foreach (var mecanico in Mecanicos)
             {
                  if (mecanico.Id == mec.Id)
@@ -148,58 +178,59 @@ namespace SistemaTaller
              */
 
 
-            //Int32.TryParse(tbInterno.Text, out var interno);
-            Vehiculo vec = new Vehiculo();
-            foreach (var vehiculo in vehiculos)
-            {
-                if (tbInterno.Text == vehiculo.Interno)
+                //Int32.TryParse(tbInterno.Text, out var interno);
+                Vehiculo vec = new Vehiculo();
+                foreach (var vehiculo in vehiculos)
                 {
-                    vec = vehiculo;
+                    if (tbInterno.Text == vehiculo.Interno)
+                    {
+                        vec = vehiculo;
+                    }
                 }
-            }
-            //Int32.TryParse(tbMonto.Text, out var monto);
-            decimal monto = Convert.ToDecimal(tbMonto.Text);
-            //Seteo la tarea pendiente con los nuevos datos del formulario
-            TareaPendiente tareaPendiente = new TareaPendiente
-            {
-                TareaPendienteId = TareaPendienteID,
-                Diagnosticos = Diagnosticos,
-                Estado = !Diagnosticos.Any(),
-                FechaTarea = DateTime.Now,
-                FechaRealizado = dTPfechaTarea.Value,
-                FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),
-                MecanicoId = mec.MecanicoId,
-                VehiculoId = vec.VehiculoId,
-                Monto = (Decimal)monto,
-                Service = cbService.Checked,
-                Tipo = "Chequeo"
-            };
-            //Actualizo la tarea Pendiente en la base de datos.
-            var TareaDao = new TareaPendienteDao();
-            TareaDao.Update(tareaPendiente);
+                //Int32.TryParse(tbMonto.Text, out var monto);
+                decimal monto = Convert.ToDecimal(tbMonto.Text);
+                //Seteo la tarea pendiente con los nuevos datos del formulario
+                TareaPendiente tareaPendiente = new TareaPendiente
+                {
+                    TareaPendienteId = TareaPendienteID,
+                    Diagnosticos = Diagnosticos,
+                    Estado = !Diagnosticos.Any(),
+                    FechaTarea = DateTime.Now,
+                    FechaRealizado = dTPfechaTarea.Value,
+                    FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),
+                    MecanicoId = mec.MecanicoId,
+                    VehiculoId = vec.VehiculoId,
+                    Monto = (Decimal)monto,
+                    Service = cbService.Checked,
+                    Tipo = "Chequeo"
+                };
+                //Actualizo la tarea Pendiente en la base de datos.
+                var TareaDao = new TareaPendienteDao();
+                TareaDao.Update(tareaPendiente);
 
-            //Actualizo los diagnoticos realacionados a ese TareaPendiente.
-            //Primero borro todos los diagnoticos viejos.
-            DiagnosticoDao diagnosticoDao = new DiagnosticoDao();
-            foreach (Diagnostico diagnosticoBorrar in diagAmod)
-            {
-                diagnosticoDao.BorrarDiagnosticoByTareaPendienteID(TareaPendienteID);
+                //Actualizo los diagnoticos realacionados a ese TareaPendiente.
+                //Primero borro todos los diagnoticos viejos.
+                DiagnosticoDao diagnosticoDao = new DiagnosticoDao();
+                foreach (Diagnostico diagnosticoBorrar in diagAmod)
+                {
+                    diagnosticoDao.BorrarDiagnosticoByTareaPendienteID(TareaPendienteID);
+                }
+            
+            
+                //ahora cargo los nuevos diagnosticos.
+            
+            
+                foreach (var diag in Diagnosticos)
+                {
+                    diag.TareaPendienteId = TareaPendienteID;
+                    diagnosticoDao.InsertDiagnostico(diag);
+                }
+                MessageBox.Show("Se modifico el mantenimiento", "Modificacion de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                fListadoServicio form = new fListadoServicio();
+                form.Show();
+                this.Close();
+                
             }
-            
-            
-            //ahora cargo los nuevos diagnosticos.
-            
-            
-            foreach (var diag in Diagnosticos)
-            {
-               diag.TareaPendienteId = TareaPendienteID;
-               diagnosticoDao.InsertDiagnostico(diag);
-            }
-            MessageBox.Show("Se modifico el mantenimiento", "Modificacion de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            fListadoServicio form = new fListadoServicio();
-            form.Show();
-            this.Close();
-            
 
         }
 
@@ -376,6 +407,11 @@ namespace SistemaTaller
             fListadoServicio form = new fListadoServicio();
             form.Show();
             this.Close();
+        }
+
+        private void tabTransmision_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SistemaTaller
         public ICollection<FilaDiagnosticoChequeo> FilaDiagnosticos { get; set; }
         public ICollection<Vehiculo> vehiculos { get; set; }
         private ICollection<Mecanico> Mecanicos { get; set; }
-
+        public bool fechaValida = true;
         public fCargarCheck()
         {
             InitializeComponent();
@@ -172,7 +172,11 @@ namespace SistemaTaller
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            
+            if (dTPfechaTarea.Value > DateTime.Now)
+            {
+                fechaValida = false;
+
+            }
             
         }
 
@@ -201,7 +205,37 @@ namespace SistemaTaller
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
+            Int32.TryParse(tbInterno.Text, out var interno);
+            bool valido = false;
+            foreach (var vehiculo in vehiculos)
+            {
+                if (tbInterno.Text == vehiculo.Interno)
+                {
+                    valido = true;
+                    break;
+                }
+            }
+
+            if (!valido || fechaValida==false)
+            {
+                if (!valido)
+                {
+                    MessageBox.Show("El Vehiculo Ingresado no se encuentra en el Sistema", "Interno No Existe",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    tbInterno.Focus();
+                }
+
+                if (!fechaValida)
+                {
+                    MessageBox.Show("La fecha no puede superer la actual", "Fecha No Valida",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    dTPfechaTarea.Focus();
+                }
+            }
+            else
+            { 
+
             Diagnosticos = new List<Diagnostico>();
             foreach (var fd in FilaDiagnosticos)
             {
@@ -267,6 +301,7 @@ namespace SistemaTaller
 
             MessageBox.Show("Se registro el mantenimiento", "Registro de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             this.Close();
+            }
         }
 
         public FilaDiagnosticoChequeo MapFilaDiagnosticos(ComboBox estado, Label Parte, TextBox observacion1, string Sector1)
@@ -310,21 +345,7 @@ namespace SistemaTaller
 
         private void tbInterno_Leave(object sender, EventArgs e)
         {
-            Int32.TryParse(tbInterno.Text, out var interno);
-            bool valido = false;
-            foreach (var vehiculo in vehiculos)
-            {
-                if (tbInterno.Text == vehiculo.Interno)
-                {
-                    valido = true;
-                    break;
-                }
-            }
-
-            if (!valido)
-            {
-                MessageBox.Show("El Vehiculo Ingresado no se encuentra en el Sistema", "Interno No Existe", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
+          
         }
 
         private void cbMecanicos_SelectedIndexChanged(object sender, EventArgs e)

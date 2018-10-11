@@ -76,6 +76,7 @@
             this.button1.TabIndex = 41;
             this.button1.Text = "Exportar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // button2
             // 
@@ -86,6 +87,7 @@
             this.button2.TabIndex = 42;
             this.button2.Text = "Imprimir";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // button3
             // 
@@ -155,6 +157,7 @@
             this.button6.TabIndex = 44;
             this.button6.Text = "Eliminar";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             // 
             // gridSerReal
             // 
