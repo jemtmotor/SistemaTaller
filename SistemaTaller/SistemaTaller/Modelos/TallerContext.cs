@@ -9,7 +9,7 @@ namespace SistemaTaller.Modelos
 {
     public class TallerContext : DbContext
     {
-        public TallerContext() : base( "SistemaTaller3")
+        public TallerContext() : base( "SistemaTaller5")
         {
 
         }
@@ -23,6 +23,11 @@ namespace SistemaTaller.Modelos
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TareaPendiente>().Property(ft => ft.FechaTarea).IsOptional();
+            modelBuilder.Entity<TareaPendiente>().Property(ft => ft.FechaRealizado).IsOptional();
+            modelBuilder.Entity<TareaPendiente>().Property(ft => ft.FechaRecordatorio).IsOptional();
+            
+
             base.OnModelCreating(modelBuilder);
         }
 

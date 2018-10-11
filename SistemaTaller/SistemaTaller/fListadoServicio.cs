@@ -66,6 +66,7 @@ namespace SistemaTaller
         private void fListadoServicio_Load(object sender, EventArgs e)
         {
             var contexto = new TallerContext();
+            // datos ;
             if (filtro == false)
             {
 
@@ -98,8 +99,41 @@ namespace SistemaTaller
                     txtID = "";
                 }
 
-
-                var datos = from tablaTareaPendiente in contexto.TareaPendientes
+                var tareas= contexto.TareaPendientes.ToList();
+                foreach (TareaPendiente tarea in tareas)
+                {
+                    tarea.Mecanico = contexto.Mecanicos.Find(tarea.MecanicoId);
+                    tarea.Interno = contexto.Vehiculos.Find(tarea.VehiculoId);
+                }
+                List<object> p = new List<object>();
+                foreach (var tablaTareaPendiente in tareas)
+                {
+                    if ((tablaTareaPendiente.TareaPendienteId.ToString().Contains(txtID)) &&
+                        (tablaTareaPendiente.Tipo.Contains(tipo)) &&
+                        (tablaTareaPendiente.Interno.Sucursal.Contains(sucursal)) &&
+                        (tablaTareaPendiente.Interno.Patente.ToUpper().Contains(dominio)) &&
+                        (tablaTareaPendiente.Interno.Interno.Contains(interno)) &&
+                        (tablaTareaPendiente.FechaTarea >= fechaInicio.Date &&
+                         tablaTareaPendiente.FechaTarea <= fechaFin.Date) &&
+                        (tablaTareaPendiente.Mecanico.Nombre.ToUpper().Contains(nombre)) &&
+                        (tablaTareaPendiente.Mecanico.Apellido.ToUpper().Contains(apellido)) &&
+                        ((tablaTareaPendiente.Monto >= montoInicio) && (tablaTareaPendiente.Monto <= montoFin)))
+                    {
+                        p.Add(new {
+                            ID = tablaTareaPendiente.TareaPendienteId,
+                            Tipo = tablaTareaPendiente.Tipo,
+                            Service = tablaTareaPendiente.Service,
+                            InternoVehiculo = tablaTareaPendiente.Interno.Interno,
+                            DominioVehiculo = tablaTareaPendiente.Interno.Patente,
+                            Fecha = tablaTareaPendiente.FechaRealizado,
+                            Sucursal = tablaTareaPendiente.Interno.Sucursal,
+                            Monto = tablaTareaPendiente.Monto,
+                            ApellidoMecanico = tablaTareaPendiente.Mecanico.Apellido,
+                            NombreMecanico = tablaTareaPendiente.Mecanico.Nombre,
+                        });
+                    }
+                }
+                /* var datos = from tablaTareaPendiente in tareas//contexto.TareaPendientes
                             where (tablaTareaPendiente.TareaPendienteId.ToString().Contains(txtID)) &&
                             (tablaTareaPendiente.Tipo.Contains(tipo)) &&
                             (tablaTareaPendiente.Interno.Sucursal.Contains(sucursal)) &&
@@ -122,8 +156,8 @@ namespace SistemaTaller
                                 ApellidoMecanico = tablaTareaPendiente.Mecanico.Apellido,
                                 NombreMecanico = tablaTareaPendiente.Mecanico.Nombre,
                             };
-
-                this.gridSerReal.DataSource = datos.ToList();
+                            */
+                this.gridSerReal.DataSource = p.ToList();
             }
 
                 this.gridSerReal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

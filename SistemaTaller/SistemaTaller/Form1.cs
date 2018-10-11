@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaTaller.DatosDao;
 using SistemaTaller.Modelos;
 
 namespace SistemaTaller
@@ -290,6 +291,22 @@ namespace SistemaTaller
             {
                 button1.Enabled = false;
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Diagnostico diagnostico = new Diagnostico()
+            {
+                Estado = true,
+                Observacion = "hoaasd",
+                Parte = "motor",
+                Sector = "tren delantero",
+                TareaPendienteId = 1,
+                };
+            DiagnosticoDao diag = new DiagnosticoDao();
+            diag.InsertDiagnostico(diagnostico);
+            int x = 1;
+
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -13,8 +15,11 @@ namespace SistemaTaller.Modelos
         [Key]
         public int TareaPendienteId { get; set; }
         //public int Interno { get; set; }
+        [Column(TypeName="Date")]
         public DateTime FechaTarea { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime FechaRealizado { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime FechaRecordatorio { get; set; }
 
         public IEnumerable<Diagnostico> Diagnosticos { get; set; }
