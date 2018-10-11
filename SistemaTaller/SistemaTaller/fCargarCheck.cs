@@ -246,6 +246,7 @@ namespace SistemaTaller
             {
                 Diagnosticos = Diagnosticos,
                 Estado = !Diagnosticos.Any(),
+                FechaTarea = DateTime.Now,
                 FechaRealizado = dTPfechaTarea.Value,
                 FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),
                 MecanicoId = mec.MecanicoId,

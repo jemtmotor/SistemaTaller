@@ -166,6 +166,7 @@
             this.gridSerReal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSerReal_CellContentClick);
             this.gridSerReal.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSerReal_RowEnter);
             this.gridSerReal.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSerReal_RowLeave);
+            this.gridSerReal.SelectionChanged += new System.EventHandler(this.gridSerReal_SelectionChanged);
             // 
             // fListadoServicio
             // 
