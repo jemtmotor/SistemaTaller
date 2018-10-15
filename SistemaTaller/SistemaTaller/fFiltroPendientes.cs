@@ -38,10 +38,14 @@ namespace SistemaTaller
             var contexto = new TallerContext();
 
             //Sucursal
-            var sucursales = from tablaVehiculo in contexto.Vehiculos
-                             select tablaVehiculo.Sucursal;
-            var listaSucursales = sucursales.ToList();
-            listaSucursales.Insert(0, "Sin Filtro");
+             List<string> listaSucursales = new List<string>();
+
+            listaSucursales.Add("Sin Filtro");
+            listaSucursales.Add("San Salvador de Jujuy");
+            listaSucursales.Add("San Pedro");
+            listaSucursales.Add("Maimara");
+            listaSucursales.Add("Humahuaca");
+
             cbxSucursal.DataSource = listaSucursales;
 
             chkCheck.Checked = true;
@@ -59,19 +63,7 @@ namespace SistemaTaller
         {
             try
             {
-                filtro = true;
-
-                //ID
-                var idtxt = txtID.Text;
-                idtxt = idtxt.Replace(" ", "");
-                if (idtxt == "")
-                {
-                    id = 0;
-                }
-                else
-                {                    
-                    id = Convert.ToInt32(txtID.Text);                    
-                }
+                filtro = true;              
 
 
                 //TIPO
@@ -122,7 +114,7 @@ namespace SistemaTaller
                 fechaInicio = dateFechaInicio.Value;
 
                 //
-                fTareasPendientes form = new fTareasPendientes(id, sucursal, interno, dominio, tipo, filtro, fechaInicio, fechaFin);
+                fTareasPendientes form = new fTareasPendientes(sucursal, interno, dominio, tipo, filtro, fechaInicio, fechaFin);
                 form.Show();
                 this.Close();
 

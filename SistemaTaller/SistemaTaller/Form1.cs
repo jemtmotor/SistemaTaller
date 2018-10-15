@@ -167,16 +167,16 @@ namespace SistemaTaller
 
             //Tareas del Dia
             var datosDia = from tablaTareaPendiente in contexto.TareaPendientes
-                        where (tablaTareaPendiente.FechaRecordatorio == FechaDeHoy)
+                        where (tablaTareaPendiente.FechaRecordatorio == FechaDeHoy) ||
+                        (tablaTareaPendiente.Interno.FechaProxService == FechaDeHoy)
                         select new
                         {
-                            ID = tablaTareaPendiente.TareaPendienteId,
-                            Tipo = tablaTareaPendiente.Tipo,
-                            Service = tablaTareaPendiente.Service,
-                            Interno = tablaTareaPendiente.Interno.Interno,
-                            Patente = tablaTareaPendiente.Interno.Patente,
+                            Tipo = tablaTareaPendiente.Tipo,                            
                             Fecha = tablaTareaPendiente.FechaRecordatorio,
-                            Sucursal = tablaTareaPendiente.Interno.Sucursal                           
+                            ProximoService = tablaTareaPendiente.Interno.FechaProxService,
+                            Interno = tablaTareaPendiente.Interno.Interno,
+                            Dominio = tablaTareaPendiente.Interno.Patente,
+                            Sucursal = tablaTareaPendiente.Interno.Sucursal
                         };
 
             this.gridDia.DataSource = datosDia.ToList();       
@@ -186,15 +186,15 @@ namespace SistemaTaller
 
             //Tareas Atrasadas
             var datosAtrasados = from tablaTareaPendiente in contexto.TareaPendientes
-                           where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy)
+                           where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy) ||
+                           (tablaTareaPendiente.Interno.FechaProxService < FechaDeHoy)
                            select new
                            {
-                               ID = tablaTareaPendiente.TareaPendienteId,
-                               Tipo = tablaTareaPendiente.Tipo,
-                               Service = tablaTareaPendiente.Service,
-                               Interno = tablaTareaPendiente.Interno.Interno,
-                               Patente = tablaTareaPendiente.Interno.Patente,
+                               Tipo = tablaTareaPendiente.Tipo,                               
                                Fecha = tablaTareaPendiente.FechaRecordatorio,
+                               ProximoService = tablaTareaPendiente.Interno.FechaProxService,
+                               Interno = tablaTareaPendiente.Interno.Interno,
+                               Dominio = tablaTareaPendiente.Interno.Patente,
                                Sucursal = tablaTareaPendiente.Interno.Sucursal
                            };
 
@@ -208,15 +208,15 @@ namespace SistemaTaller
             var fechaCom2 = FechaDeHoy.AddDays(14);
 
             var datosProximos = from tablaTareaPendiente in contexto.TareaPendientes
-                                 where ((tablaTareaPendiente.FechaRecordatorio >= fechaCom1) && (tablaTareaPendiente.FechaRecordatorio <= fechaCom2))
-                                 select new
+                                 where ((tablaTareaPendiente.FechaRecordatorio >= fechaCom1) && (tablaTareaPendiente.FechaRecordatorio <= fechaCom2)) ||
+                                 ((tablaTareaPendiente.Interno.FechaProxService >= fechaCom1) && (tablaTareaPendiente.Interno.FechaProxService <= fechaCom2))
+                                select new
                                  {
-                                     ID = tablaTareaPendiente.TareaPendienteId,
-                                     Tipo = tablaTareaPendiente.Tipo,
-                                     Service = tablaTareaPendiente.Service,
-                                     Interno = tablaTareaPendiente.Interno.Interno,
-                                     Patente = tablaTareaPendiente.Interno.Patente,
+                                     Tipo = tablaTareaPendiente.Tipo,                                     
                                      Fecha = tablaTareaPendiente.FechaRecordatorio,
+                                     ProximoService = tablaTareaPendiente.Interno.FechaProxService,
+                                     Interno = tablaTareaPendiente.Interno.Interno,
+                                     Dominio = tablaTareaPendiente.Interno.Patente,
                                      Sucursal = tablaTareaPendiente.Interno.Sucursal
                                  };
 

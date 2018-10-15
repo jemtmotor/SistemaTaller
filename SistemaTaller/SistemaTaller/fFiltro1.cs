@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaTaller.DatosDao;
 using SistemaTaller.Modelos;
 
 namespace SistemaTaller
@@ -44,11 +45,22 @@ namespace SistemaTaller
         {
             var contexto = new TallerContext();
 
-            //Sucursal
-            var sucursales = from tablaVehiculo in contexto.Vehiculos
-                             select tablaVehiculo.Sucursal;
-            var listaSucursales = sucursales.ToList();
-            listaSucursales.Insert(0, "Sin Filtro");
+            ////Sucursal
+            //VehiculosDao vecDao = new VehiculosDao();
+            //vecDao.GetMecanicos()
+            //var sucursales = from tablaVehiculo in contexto.Vehiculos
+            //                 select  tablaVehiculo.Sucursal;
+            //var listaSucursales = sucursales.ToList();
+            //listaSucursales.Insert(0, "Sin Filtro");
+
+            List<string> listaSucursales = new List<string>();
+
+            listaSucursales.Add("Sin Filtro");
+            listaSucursales.Add("San Salvador de Jujuy");
+            listaSucursales.Add("San Pedro");
+            listaSucursales.Add("Maimara");
+            listaSucursales.Add("Humahuaca");
+
             cbxSucursal.DataSource = listaSucursales;
 
             chkCheck.Checked = true;

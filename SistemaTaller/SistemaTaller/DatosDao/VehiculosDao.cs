@@ -28,5 +28,19 @@ namespace SistemaTaller.DatosDao
 
         }
 
+        public void Update(Vehiculo item)
+        {
+            TallerContext tc = new TallerContext();
+            var entity = tc.Vehiculos.Find(item.VehiculoId);
+            if (entity == null)
+            {
+                return;
+            }
+
+            tc.Entry(entity).CurrentValues.SetValues(item);
+            tc.SaveChanges();
+
+
+        }
     }
 }

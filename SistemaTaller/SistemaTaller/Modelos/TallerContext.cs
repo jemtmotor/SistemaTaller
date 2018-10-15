@@ -9,7 +9,7 @@ namespace SistemaTaller.Modelos
 {
     public class TallerContext : DbContext
     {
-        public TallerContext() : base( "SistemaTaller5")
+        public TallerContext() : base( "SistemaTallerBDNUEVA")
         {
 
         }
@@ -27,7 +27,8 @@ namespace SistemaTaller.Modelos
             modelBuilder.Entity<TareaPendiente>().Property(ft => ft.FechaRealizado).IsOptional();
             modelBuilder.Entity<TareaPendiente>().Property(ft => ft.FechaRecordatorio).IsOptional();
             
-
+            TallerContext tc = new TallerContext();
+           
             base.OnModelCreating(modelBuilder);
         }
 

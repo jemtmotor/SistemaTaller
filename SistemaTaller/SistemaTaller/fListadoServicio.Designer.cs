@@ -135,16 +135,16 @@
             this.groupBox2.Size = new System.Drawing.Size(285, 76);
             this.groupBox2.TabIndex = 46;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Modificar o Eliminar Registro Seleccionado";
+            this.groupBox2.Text = "Modificar Registro Seleccionado";
             // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(16, 27);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(112, 31);
+            this.button5.Size = new System.Drawing.Size(248, 31);
             this.button5.TabIndex = 43;
-            this.button5.Text = "Modificar";
+            this.button5.Text = "Detalles / Modificar";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 

@@ -14,7 +14,7 @@ namespace SistemaTaller
     public partial class fTareasPendientes : Form
     {
         public Boolean filtro;
-        int id;             
+                 
         string sucursal;
         string interno;
         string dominio;
@@ -28,11 +28,11 @@ namespace SistemaTaller
             InitializeComponent();
         }
 
-        public fTareasPendientes(int ide, string suc, string inter, string dom, string tip,bool fil,DateTime fechaI, DateTime fechaF)
+        public fTareasPendientes(string suc, string inter, string dom, string tip,bool fil,DateTime fechaI, DateTime fechaF)
         {
             InitializeComponent();
 
-            id = ide;                    
+                              
             sucursal = suc;
             interno = inter;
             dominio = dom;
@@ -95,14 +95,13 @@ namespace SistemaTaller
                                 // where tablaTareaPendiente.Mecanico.Id == tablaMecanico.Id
                             select new
                             {
-                                ID = tablaTareaPendiente.TareaPendienteId,
-                                Fecha = tablaTareaPendiente.FechaTarea,                               
-                                Service = tablaTareaPendiente.Service,
-                                Tipo = tablaTareaPendiente.Tipo,
-                                Sucursal = tablaTareaPendiente.Interno.Sucursal,
+                                Tipo = tablaTareaPendiente.Tipo,                                
+                                Fecha = tablaTareaPendiente.FechaRecordatorio,
+                                ProximoService = tablaTareaPendiente.Interno.FechaProxService,
                                 InternoVehiculo = tablaTareaPendiente.Interno.Interno,
-                                Dominio = tablaTareaPendiente.Interno.Patente
-
+                                Dominio = tablaTareaPendiente.Interno.Patente,
+                                Sucursal = tablaTareaPendiente.Interno.Sucursal                               
+                                
 
                             };
 
@@ -110,30 +109,23 @@ namespace SistemaTaller
 
             }
             else
-            {
-                var txtID = id.ToString();
-                if (id == 0)
-                {
-                    txtID = "";
-                }
+            {                
                 
 
                 var datos = from tablaTarePendiente in contexto.TareaPendientes
-                                where (tablaTarePendiente.TareaPendienteId.ToString().Contains(txtID)) &&
-                                (tablaTarePendiente.Tipo.Contains(tipo))&&                            
-                                (tablaTarePendiente.Interno.Sucursal.Contains(sucursal))&&
+                                where (tablaTarePendiente.Tipo.Contains(tipo))&&                            
+                                (tablaTarePendiente.Interno.Sucursal.Replace(" ","").Contains(sucursal))&&
                                 (tablaTarePendiente.Interno.Patente.ToUpper().Contains(dominio))&&
                                 (tablaTarePendiente.Interno.Interno.Contains(interno))&&
-                                (tablaTarePendiente.FechaTarea >= fechaInicio && tablaTarePendiente.FechaTarea <= fechaFin)
+                                (tablaTarePendiente.FechaRecordatorio >= fechaInicio && tablaTarePendiente.FechaRecordatorio <= fechaFin)
                                 select new
                                 {
-                                    ID = tablaTarePendiente.TareaPendienteId,
-                                    Fecha = tablaTarePendiente.FechaTarea,                                    
-                                    Service = tablaTarePendiente.Service,
-                                    Tipo = tablaTarePendiente.Tipo,
-                                    Sucursal = tablaTarePendiente.Interno.Sucursal,
+                                    Tipo = tablaTarePendiente.Tipo,                                    
+                                    Fecha = tablaTarePendiente.FechaRecordatorio,
+                                    ProximoService = tablaTarePendiente.Interno.FechaProxService,
                                     InternoVehiculo = tablaTarePendiente.Interno.Interno,
-                                    Dominio = tablaTarePendiente.Interno.Patente
+                                    Dominio = tablaTarePendiente.Interno.Patente,
+                                    Sucursal = tablaTarePendiente.Interno.Sucursal
                                 };
                 this.dataGridView1.DataSource = datos.ToList();               
 
@@ -156,14 +148,12 @@ namespace SistemaTaller
             var datos = from tablaTareaPendiente in contexto.TareaPendientes
                         select new
                         {
-                            ID = tablaTareaPendiente.TareaPendienteId,
-                            Fecha = tablaTareaPendiente.FechaTarea,
-                            Monto = tablaTareaPendiente.Monto,
-                            Service = tablaTareaPendiente.Service,
-                            Tipo = tablaTareaPendiente.Tipo,
-                            Sucursal = tablaTareaPendiente.Interno.Sucursal,
+                            Tipo = tablaTareaPendiente.Tipo,                           
+                            Fecha = tablaTareaPendiente.FechaRecordatorio,
+                            ProximoService = tablaTareaPendiente.Interno.FechaProxService,
                             InternoVehiculo = tablaTareaPendiente.Interno.Interno,
-                            Dominio = tablaTareaPendiente.Interno.Patente
+                            Dominio = tablaTareaPendiente.Interno.Patente,
+                            Sucursal = tablaTareaPendiente.Interno.Sucursal
 
                         };
 

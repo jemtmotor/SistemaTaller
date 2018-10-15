@@ -167,18 +167,7 @@ namespace SistemaTaller
 
                 object MecanicoSeleccionado = cbMecanicos.SelectedItem;
                 Mecanico mec = MecanicoSeleccionado as Mecanico;
-                /*Mecanico mecanicoIngreso = new Mecanico();
-            foreach (var mecanico in Mecanicos)
-            {
-                 if (mecanico.Id == mec.Id)
-                 {
-                     mecanicoIngreso = mecanico;
-            }
-             }
-             */
-
-
-                //Int32.TryParse(tbInterno.Text, out var interno);
+               
                 Vehiculo vec = new Vehiculo();
                 foreach (var vehiculo in vehiculos)
                 {
@@ -204,6 +193,14 @@ namespace SistemaTaller
                     Service = cbService.Checked,
                     Tipo = "Chequeo"
                 };
+                //pregunto si Service igual a verdadero
+                if (cbService.Checked)
+                {
+                    vec.FechaProxService = dTPfechaTarea.Value.AddMonths(3);
+                    //Actualizar la fecha de proximo service en el vehiculo.
+                    VehiculosDao vDao = new VehiculosDao();
+                    vDao.Update(vec);
+                }
                 //Actualizo la tarea Pendiente en la base de datos.
                 var TareaDao = new TareaPendienteDao();
                 TareaDao.Update(tareaPendiente);
@@ -256,6 +253,7 @@ namespace SistemaTaller
             }
             else
             {
+                txBox.Text = "";
                 txBox.Enabled = false;
             }
 
@@ -412,6 +410,19 @@ namespace SistemaTaller
         private void tabTransmision_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dTPfechaTarea_ValueChanged(object sender, EventArgs e)
+        {
+            if (dTPfechaTarea.Value > DateTime.Now)
+            {
+                fechaValida = false;
+
+            }
+            else
+            {
+                fechaValida = true;
+            }
         }
     }
 }
