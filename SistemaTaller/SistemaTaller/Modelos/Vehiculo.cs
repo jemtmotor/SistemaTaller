@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace SistemaTaller.Modelos
         public int Año { get; set; }
         public string Tipo { get; set; }
         public string Interno { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime FechaProxService { get; set; }
         public ICollection<TareaPendiente> TareaPendientes { get; set; }
     }

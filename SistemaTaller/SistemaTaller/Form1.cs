@@ -15,16 +15,7 @@ namespace SistemaTaller
     public partial class Form1 : Form
     {
 
-        int idTareaPendientePrueba;
-        string interno;
-
-        int idTareaPendientePrueba2;
-        string interno2;
-
-        int idTareaPendientePrueba3;
-        string interno3;
-
-        public static bool verificar;
+        
 
 
         public Form1()
@@ -175,12 +166,11 @@ namespace SistemaTaller
             DateTime FechaDeHoy = DateTime.Today;
 
             //Tareas del Dia
-            var datosDia = from tablaTareaPendiente in contexto.TareaPendietePrueba
+            var datosDia = from tablaTareaPendiente in contexto.TareaPendientes
                         where (tablaTareaPendiente.FechaRecordatorio == FechaDeHoy) ||
                         (tablaTareaPendiente.Interno.FechaProxService == FechaDeHoy)
                         select new
                         {
-                            ID = tablaTareaPendiente.TareaPendienteId,
                             Tipo = tablaTareaPendiente.Tipo,                            
                             Fecha = tablaTareaPendiente.FechaRecordatorio,
                             ProximoService = tablaTareaPendiente.Interno.FechaProxService,
@@ -193,40 +183,35 @@ namespace SistemaTaller
 
             this.gridDia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            this.gridDia.Columns[0].Width = 30;
-
 
             //Tareas Atrasadas
-            var datosAtrasados = from tablaTareaPendiente in contexto.TareaPendietePrueba
-                                 where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy) ||
-                                 (tablaTareaPendiente.Interno.FechaProxService < FechaDeHoy)
-                                 select new
-                                 {
-                                     ID = tablaTareaPendiente.TareaPendienteId,
-                                     Tipo = tablaTareaPendiente.Tipo,
-                                     Fecha = tablaTareaPendiente.FechaRecordatorio,
-                                     ProximoService = tablaTareaPendiente.Interno.FechaProxService,
-                                     Interno = tablaTareaPendiente.Interno.Interno,
-                                     Dominio = tablaTareaPendiente.Interno.Patente,
-                                     Sucursal = tablaTareaPendiente.Interno.Sucursal
-                                 };
+            var datosAtrasados = from tablaTareaPendiente in contexto.TareaPendientes
+                           where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy) ||
+                           (tablaTareaPendiente.Interno.FechaProxService < FechaDeHoy)
+                           select new
+                           {
+                               Tipo = tablaTareaPendiente.Tipo,                               
+                               Fecha = tablaTareaPendiente.FechaRecordatorio,
+                               ProximoService = tablaTareaPendiente.Interno.FechaProxService,
+                               Interno = tablaTareaPendiente.Interno.Interno,
+                               Dominio = tablaTareaPendiente.Interno.Patente,
+                               Sucursal = tablaTareaPendiente.Interno.Sucursal
+                           };
 
             this.gridAtras.DataSource = datosAtrasados.ToList();
 
             this.gridAtras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            this.gridAtras.Columns[0].Width = 30;
 
             //Proximas tareas
             var fechaCom1 = FechaDeHoy.AddDays(1);
             var fechaCom2 = FechaDeHoy.AddDays(14);
 
-            var datosProximos = from tablaTareaPendiente in contexto.TareaPendietePrueba
+            var datosProximos = from tablaTareaPendiente in contexto.TareaPendientes
                                  where ((tablaTareaPendiente.FechaRecordatorio >= fechaCom1) && (tablaTareaPendiente.FechaRecordatorio <= fechaCom2)) ||
                                  ((tablaTareaPendiente.Interno.FechaProxService >= fechaCom1) && (tablaTareaPendiente.Interno.FechaProxService <= fechaCom2))
                                 select new
                                  {
-                                     ID = tablaTareaPendiente.TareaPendienteId,
                                      Tipo = tablaTareaPendiente.Tipo,                                     
                                      Fecha = tablaTareaPendiente.FechaRecordatorio,
                                      ProximoService = tablaTareaPendiente.Interno.FechaProxService,
@@ -238,8 +223,6 @@ namespace SistemaTaller
             this.gridProx.DataSource = datosProximos.ToList();
 
             this.gridProx.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            this.gridProx.Columns[0].Width = 30;
 
             //DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             //if (result == DialogResult.Yes)
@@ -256,34 +239,24 @@ namespace SistemaTaller
         private void gridDia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             button1.Enabled = true;
-
-            idTareaPendientePrueba = Convert.ToInt32(gridDia.Rows[e.RowIndex].Cells[0].Value);
-            interno = gridDia.Rows[e.RowIndex].Cells[4].Value.ToString();
-
         }
 
         private void gridAtras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             button2.Enabled = true;
-
-            idTareaPendientePrueba2 = Convert.ToInt32(gridAtras.Rows[e.RowIndex].Cells[0].Value);
-            interno2 = gridAtras.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
 
         private void gridProx_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             button3.Enabled = true;
-
-            idTareaPendientePrueba3 = Convert.ToInt32(gridProx.Rows[e.RowIndex].Cells[0].Value);
-            interno3 = gridProx.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-            {               
-               fCargarCheck form = new fCargarCheck(idTareaPendientePrueba,interno);
+            {
+               fCargarCheck form = new fCargarCheck();
                form.Show();
             }
             else
@@ -297,7 +270,7 @@ namespace SistemaTaller
             DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                fCargarCheck form = new fCargarCheck(idTareaPendientePrueba2,interno2);
+                fCargarCheck form = new fCargarCheck();
                 form.Show();
             }
             else
@@ -311,7 +284,7 @@ namespace SistemaTaller
             DialogResult result = MessageBox.Show("Desea cargar la tarea?", "Cargar Tarea", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                fCargarCheck form = new fCargarCheck(idTareaPendientePrueba3,interno3);
+                fCargarCheck form = new fCargarCheck();
                 form.Show();
             }
             else
@@ -334,91 +307,6 @@ namespace SistemaTaller
             diag.InsertDiagnostico(diagnostico);
             int x = 1;
 
-        }
-
-
-
-        //PARA REFRESCAR
-        private void Form1_Activated(object sender, EventArgs e)
-        {
-            if (verificar)
-            {
-                var contexto = new TallerContext();
-
-                DateTime FechaDeHoy = DateTime.Today;
-
-                //Tareas del Dia
-                var datosDia = from tablaTareaPendiente in contexto.TareaPendietePrueba
-                               where (tablaTareaPendiente.FechaRecordatorio == FechaDeHoy) ||
-                               (tablaTareaPendiente.Interno.FechaProxService == FechaDeHoy)
-                               select new
-                               {
-                                   ID = tablaTareaPendiente.TareaPendienteId,
-                                   Tipo = tablaTareaPendiente.Tipo,
-                                   Fecha = tablaTareaPendiente.FechaRecordatorio,
-                                   ProximoService = tablaTareaPendiente.Interno.FechaProxService,
-                                   Interno = tablaTareaPendiente.Interno.Interno,
-                                   Dominio = tablaTareaPendiente.Interno.Patente,
-                                   Sucursal = tablaTareaPendiente.Interno.Sucursal
-                               };
-
-                this.gridDia.DataSource = datosDia.ToList();
-
-                this.gridDia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                this.gridDia.Columns[0].Width = 30;
-
-
-                //Tareas Atrasadas
-                var datosAtrasados = from tablaTareaPendiente in contexto.TareaPendietePrueba
-                                     where (tablaTareaPendiente.FechaRecordatorio < FechaDeHoy) ||
-                                     (tablaTareaPendiente.Interno.FechaProxService < FechaDeHoy)
-                                     select new
-                                     {
-                                         ID = tablaTareaPendiente.TareaPendienteId,
-                                         Tipo = tablaTareaPendiente.Tipo,
-                                         Fecha = tablaTareaPendiente.FechaRecordatorio,
-                                         ProximoService = tablaTareaPendiente.Interno.FechaProxService,
-                                         Interno = tablaTareaPendiente.Interno.Interno,
-                                         Dominio = tablaTareaPendiente.Interno.Patente,
-                                         Sucursal = tablaTareaPendiente.Interno.Sucursal
-                                     };
-
-                this.gridAtras.DataSource = datosAtrasados.ToList();
-
-                this.gridAtras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                this.gridAtras.Columns[0].Width = 30;
-
-
-
-                //Proximas tareas
-                var fechaCom1 = FechaDeHoy.AddDays(1);
-                var fechaCom2 = FechaDeHoy.AddDays(14);
-
-                var datosProximos = from tablaTareaPendiente in contexto.TareaPendietePrueba
-                                    where ((tablaTareaPendiente.FechaRecordatorio >= fechaCom1) && (tablaTareaPendiente.FechaRecordatorio <= fechaCom2)) ||
-                                    ((tablaTareaPendiente.Interno.FechaProxService >= fechaCom1) && (tablaTareaPendiente.Interno.FechaProxService <= fechaCom2))
-                                    select new
-                                    {
-                                        ID = tablaTareaPendiente.TareaPendienteId,
-                                        Tipo = tablaTareaPendiente.Tipo,
-                                        Fecha = tablaTareaPendiente.FechaRecordatorio,
-                                        ProximoService = tablaTareaPendiente.Interno.FechaProxService,
-                                        Interno = tablaTareaPendiente.Interno.Interno,
-                                        Dominio = tablaTareaPendiente.Interno.Patente,
-                                        Sucursal = tablaTareaPendiente.Interno.Sucursal
-                                    };
-
-                this.gridProx.DataSource = datosProximos.ToList();
-
-                this.gridProx.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-
-                this.gridProx.Columns[0].Width = 30;
-
-
-                verificar = false;
-            }
         }
     }
 }

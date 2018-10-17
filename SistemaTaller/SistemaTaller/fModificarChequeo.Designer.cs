@@ -1066,6 +1066,7 @@
             this.dTPfechaTarea.Name = "dTPfechaTarea";
             this.dTPfechaTarea.Size = new System.Drawing.Size(102, 20);
             this.dTPfechaTarea.TabIndex = 58;
+            this.dTPfechaTarea.ValueChanged += new System.EventHandler(this.dTPfechaTarea_ValueChanged);
             // 
             // tbInterno
             // 

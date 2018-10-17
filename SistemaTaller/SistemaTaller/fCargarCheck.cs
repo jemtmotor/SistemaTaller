@@ -202,6 +202,10 @@ namespace SistemaTaller
                 fechaValida = false;
 
             }
+            else
+            {
+                fechaValida = true;
+            }
             
         }
 
@@ -218,6 +222,7 @@ namespace SistemaTaller
             }
             else
             {
+                txBox.Text = "";
                 txBox.Enabled = false;
             }
 
@@ -314,6 +319,14 @@ namespace SistemaTaller
                 Service = cbService.Checked,
                 Tipo = "Chequeo"
             };
+                if (cbService.Checked)
+                {
+                    vec.FechaProxService = dTPfechaTarea.Value.AddMonths(3);
+                    //Actualizar la fecha de proximo service en el vehiculo.
+                    VehiculosDao vDao = new VehiculosDao();
+                    vDao.Update(vec);
+                }
+
             var TareaDao = new TareaPendienteDao();
                 TareaDao.InsertTareaPendiente(tareaPendiente);
             TareaPendiente ultima = TareaDao.GetUltimoPendiente();

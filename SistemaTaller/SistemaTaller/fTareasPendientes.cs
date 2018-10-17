@@ -90,7 +90,7 @@ namespace SistemaTaller
 
             if (filtro == false)
             {
-                var datos = from tablaTareaPendiente in contexto.TareaPendietePrueba
+                var datos = from tablaTareaPendiente in contexto.TareaPendientes
                                 // from tablaMecanico in contexto.Mecanicos
                                 // where tablaTareaPendiente.Mecanico.Id == tablaMecanico.Id
                             select new
@@ -112,7 +112,7 @@ namespace SistemaTaller
             {                
                 
 
-                var datos = from tablaTarePendiente in contexto.TareaPendietePrueba
+                var datos = from tablaTarePendiente in contexto.TareaPendientes
                                 where (tablaTarePendiente.Tipo.Contains(tipo))&&                            
                                 (tablaTarePendiente.Interno.Sucursal.Replace(" ","").Contains(sucursal))&&
                                 (tablaTarePendiente.Interno.Patente.ToUpper().Contains(dominio))&&
@@ -145,7 +145,7 @@ namespace SistemaTaller
             filtro = false;
 
             var contexto = new TallerContext();
-            var datos = from tablaTareaPendiente in contexto.TareaPendietePrueba
+            var datos = from tablaTareaPendiente in contexto.TareaPendientes
                         select new
                         {
                             Tipo = tablaTareaPendiente.Tipo,                           
