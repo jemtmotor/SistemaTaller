@@ -228,6 +228,10 @@ namespace SistemaTaller
                 MessageBox.Show("Se modifico el mantenimiento", "Modificacion de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 fListadoServicio form = new fListadoServicio();
                 form.Show();
+
+                //Para Refrescar
+                Form1.verificar = true;
+
                 this.Close();
                 
             }

@@ -31,6 +31,7 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbxSucursal = new System.Windows.Forms.ComboBox();
             this.cbxInterno = new System.Windows.Forms.TextBox();
@@ -44,10 +45,7 @@
             this.dateFechaFin = new System.Windows.Forms.DateTimePicker();
             this.dateFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -84,8 +82,6 @@
             this.groupBox3.Controls.Add(this.dateFechaFin);
             this.groupBox3.Controls.Add(this.dateFechaInicio);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.txtID);
-            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
@@ -94,6 +90,16 @@
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtrar";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(287, 301);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 27);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Activar/Desactivar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -165,7 +171,7 @@
             // chkReparacion
             // 
             this.chkReparacion.AutoSize = true;
-            this.chkReparacion.Location = new System.Drawing.Point(342, 34);
+            this.chkReparacion.Location = new System.Drawing.Point(171, 37);
             this.chkReparacion.Name = "chkReparacion";
             this.chkReparacion.Size = new System.Drawing.Size(100, 21);
             this.chkReparacion.TabIndex = 38;
@@ -175,7 +181,7 @@
             // chkCheck
             // 
             this.chkCheck.AutoSize = true;
-            this.chkCheck.Location = new System.Drawing.Point(270, 34);
+            this.chkCheck.Location = new System.Drawing.Point(99, 37);
             this.chkCheck.Name = "chkCheck";
             this.chkCheck.Size = new System.Drawing.Size(66, 21);
             this.chkCheck.TabIndex = 37;
@@ -216,40 +222,14 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Fecha entre:";
             // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(90, 32);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(97, 23);
-            this.txtID.TabIndex = 18;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(59, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 17);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "ID:";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(216, 34);
+            this.label9.Location = new System.Drawing.Point(45, 37);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 17);
             this.label9.TabIndex = 25;
             this.label9.Text = "Tipo:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(287, 301);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 27);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "Activar/Desactivar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // fFiltroPendientes
             // 
@@ -287,8 +267,6 @@
         private System.Windows.Forms.DateTimePicker dateFechaFin;
         private System.Windows.Forms.DateTimePicker dateFechaInicio;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbxSucursal;
         private System.Windows.Forms.Button button1;

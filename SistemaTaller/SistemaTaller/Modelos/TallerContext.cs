@@ -9,7 +9,7 @@ namespace SistemaTaller.Modelos
 {
     public class TallerContext : DbContext
     {
-        public TallerContext() : base( "SistemaTaller5")
+        public TallerContext() : base( "SistemaTallerBDNUEVA")
         {
 
         }
@@ -20,6 +20,8 @@ namespace SistemaTaller.Modelos
         public DbSet<Diagnostico> Diagnosticos { get; set; }
         public DbSet<Mecanico> Mecanicos { get; set; }
         public DbSet<TareaPendiente> TareaPendientes { get; set; }
+
+        public DbSet<TareasPendientesPrueba> TareaPendietePrueba { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

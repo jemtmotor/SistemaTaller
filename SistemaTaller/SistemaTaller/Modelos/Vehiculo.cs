@@ -18,6 +18,7 @@ namespace SistemaTaller.Modelos
         public int Año { get; set; }
         public string Tipo { get; set; }
         public string Interno { get; set; }
+        public DateTime FechaProxService { get; set; }
         public ICollection<TareaPendiente> TareaPendientes { get; set; }
     }
 }

@@ -19,9 +19,27 @@ namespace SistemaTaller
         public ICollection<Vehiculo> vehiculos { get; set; }
         private ICollection<Mecanico> Mecanicos { get; set; }
         public bool fechaValida = true;
+
+        int idTareaPendientePrueba;
+        string vehiculoInternoPrueba;
+        bool vieneDeNotificacion;
+
         public fCargarCheck()
         {
             InitializeComponent();
+
+            vieneDeNotificacion = false;
+        }
+
+        public fCargarCheck(int idTarea, string inter)
+        {
+            InitializeComponent();
+
+            vieneDeNotificacion = true;
+            idTareaPendientePrueba = idTarea;
+            vehiculoInternoPrueba = inter;
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -35,7 +53,14 @@ namespace SistemaTaller
         }
 
         private void fCargarCheck_Load(object sender, EventArgs e)
-        {
+        {   
+            
+            if(vieneDeNotificacion == true)
+            {
+                tbInterno.Text = vehiculoInternoPrueba;
+            }
+
+
             FilaDiagnosticos = new List<FilaDiagnosticoChequeo>();
             //Sector Motor
             FilaDiagnosticos.Add(MapFilaDiagnosticos(MAceiteEstado,MAceiteParte,MAceiteObser,tabMotor.Text));
@@ -299,7 +324,46 @@ namespace SistemaTaller
                 diagDao.InsertDiagnostico(diag);
             }
 
-            MessageBox.Show("Se registro el mantenimiento", "Registro de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+
+
+                //NUEVA TABLA
+                TareasPendientesPrueba tareaPendientePrueba = new TareasPendientesPrueba
+                {
+                   
+                    FechaRecordatorio = dTPfechaTarea.Value.AddMonths(1),                    
+                    VehiculoId = vec.VehiculoId,                   
+                    Tipo = "Chequeo"
+                };
+               //LLENAME LA TABLA NUEVA CON LOS DATOS DE ARRIBA
+
+                
+                
+                
+                
+                //BORRO EL REGISTRO VIEJO DE LA TABLA NUEVA
+                if (vieneDeNotificacion == true)
+                {
+                    var contexto = new TallerContext();
+                    var consultaBorrar = from tablaTareaPendientePrueba in contexto.TareaPendietePrueba
+                                         where (tablaTareaPendientePrueba.TareaPendienteId == idTareaPendientePrueba)
+                                         select tablaTareaPendientePrueba;
+
+                    foreach (var dato in consultaBorrar)
+                    {
+                        contexto.TareaPendietePrueba.Remove(dato);
+                    }
+
+                    contexto.SaveChanges();
+                }
+
+
+
+                MessageBox.Show("Se registro el mantenimiento", "Registro de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                //Para Refrescar
+                Form1.verificar = true;
+
             this.Close();
             }
         }

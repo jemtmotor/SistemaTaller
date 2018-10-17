@@ -1,0 +1,7 @@
+﻿SET IDENTITY_INSERT [dbo].[TareaPendientes] ON
+INSERT INTO [dbo].[TareaPendientes] ([TareaPendienteId], [FechaTarea], [FechaRealizado], [FechaRecordatorio], [Monto], [Service], [Estado], [Tipo], [VehiculoId], [MecanicoId]) VALUES (1, N'2018-10-12', N'2018-10-12', N'2018-11-12', CAST(5000.00 AS Decimal(18, 2)), 1, 1, N'Chequeo', 1, 1)
+INSERT INTO [dbo].[TareaPendientes] ([TareaPendienteId], [FechaTarea], [FechaRealizado], [FechaRecordatorio], [Monto], [Service], [Estado], [Tipo], [VehiculoId], [MecanicoId]) VALUES (4, N'2018-10-12', N'2018-09-13', N'2018-10-13', CAST(5.00 AS Decimal(18, 2)), 0, 1, N'Chequeo', 2, 1)
+INSERT INTO [dbo].[TareaPendientes] ([TareaPendienteId], [FechaTarea], [FechaRealizado], [FechaRecordatorio], [Monto], [Service], [Estado], [Tipo], [VehiculoId], [MecanicoId]) VALUES (9, N'2018-10-12', N'2018-09-05', N'2018-10-05', CAST(5.00 AS Decimal(18, 2)), 1, 1, N'Chequeo', 3, 3)
+INSERT INTO [dbo].[TareaPendientes] ([TareaPendienteId], [FechaTarea], [FechaRealizado], [FechaRecordatorio], [Monto], [Service], [Estado], [Tipo], [VehiculoId], [MecanicoId]) VALUES (12, N'2018-10-12', N'2018-09-17', N'2018-10-17', CAST(6.00 AS Decimal(18, 2)), 0, 1, N'Chequeo', 4, 1)
+INSERT INTO [dbo].[TareaPendientes] ([TareaPendienteId], [FechaTarea], [FechaRealizado], [FechaRecordatorio], [Monto], [Service], [Estado], [Tipo], [VehiculoId], [MecanicoId]) VALUES (13, N'2018-10-13', N'2018-10-13', N'2018-11-13', CAST(8000.00 AS Decimal(18, 2)), 0, 0, N'Chequeo', 1, 1)
+SET IDENTITY_INSERT [dbo].[TareaPendientes] OFF

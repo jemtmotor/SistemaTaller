@@ -103,12 +103,12 @@ namespace SistemaTaller
                 var datos = from tablaTareaPendiente in contexto.TareaPendientes
                             where (tablaTareaPendiente.TareaPendienteId.ToString().Contains(txtID)) &&
                             (tablaTareaPendiente.Tipo.Contains(tipo)) &&
-                            (tablaTareaPendiente.Interno.Sucursal.Contains(sucursal)) &&
+                            (tablaTareaPendiente.Interno.Sucursal.Replace(" ","").Contains(sucursal)) &&
                             (tablaTareaPendiente.Interno.Patente.ToUpper().Contains(dominio)) &&
                             (tablaTareaPendiente.Interno.Interno.Contains(interno)) &&
-                            (tablaTareaPendiente.FechaTarea >= fechaInicio.Date && tablaTareaPendiente.FechaTarea <= fechaFin.Date)&&
-                            (tablaTareaPendiente.Mecanico.Nombre.ToUpper().Contains(nombre))&&
-                            (tablaTareaPendiente.Mecanico.Apellido.ToUpper().Contains(apellido))&&
+                            (tablaTareaPendiente.FechaRealizado >= fechaInicio.Date && tablaTareaPendiente.FechaRealizado <= fechaFin.Date)&&
+                            (tablaTareaPendiente.Mecanico.Nombre.Replace(" ","").ToUpper().Contains(nombre))&&
+                            (tablaTareaPendiente.Mecanico.Apellido.Replace(" ","").ToUpper().Contains(apellido))&&
                             ((tablaTareaPendiente.Monto >= montoInicio)&&(tablaTareaPendiente.Monto <= montoFin))
                             select new
                             {

@@ -58,6 +58,7 @@
     <Compile Include="AgregarUnidadRespuesto.Designer.cs">
       <DependentUpon>AgregarUnidadRespuesto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="DatosDao\DiagnosticoDao.cs" />
     <Compile Include="DatosDao\MecanicosDao.cs" />
     <Compile Include="DatosDao\TareaPendienteDao.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Modelos\Repuesto.cs" />
     <Compile Include="Modelos\TallerContext.cs" />
     <Compile Include="Modelos\TareaPendiente.cs" />
+    <Compile Include="Modelos\TareasPendientesPrueba.cs" />
     <Compile Include="Modelos\Vehiculo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
